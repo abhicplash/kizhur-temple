@@ -1,0 +1,727 @@
+
+/* =========================================
+   KIZHUR THERU TEMPLE
+   GALLERY PAGE
+========================================= */
+
+.temple-gallery-page {
+  width: 100%;
+  overflow: hidden;
+  font-family: var(--font-anek), sans-serif;
+}
+
+.temple-gallery-page *,
+.temple-gallery-page *::before,
+.temple-gallery-page *::after {
+  box-sizing: border-box;
+}
+
+/* =========================================
+   GALLERY HERO
+========================================= */
+
+.gallery-page-hero {
+  position: relative;
+  isolation: isolate;
+
+  min-height: 440px;
+  padding: 140px 5% 75px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(0, 26, 14, 0.72),
+      rgba(0, 26, 14, 0.25)
+    ),
+    url("/images/temple-hero.webp");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: #fff7e8;
+  text-align: center;
+}
+
+.gallery-page-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  width: 100%;
+}
+
+.gallery-hero-intro {
+  margin: 0 0 12px;
+  color: #f7e2bb;
+
+  font-size: clamp(15px, 1.6vw, 20px);
+  font-weight: 500;
+  line-height: 1.65;
+}
+
+.gallery-page-hero h1 {
+  margin: 0;
+
+  color: #f5d693;
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.gallery-hero-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+
+  margin: 16px auto 20px;
+  color: #e9bd62;
+}
+
+.gallery-hero-divider span {
+  width: 78px;
+  height: 1px;
+  background: #dfb55a;
+}
+
+.gallery-breadcrumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  font-size: 14px;
+  color: #f9e9cb;
+}
+
+.gallery-breadcrumb a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.gallery-breadcrumb a:hover {
+  color: #eec36b;
+}
+
+/* =========================================
+   MAIN GALLERY SECTION
+========================================= */
+
+.gallery-page-main {
+  position: relative;
+
+  padding: 85px 5% 100px;
+
+  background:
+    radial-gradient(
+      ellipse at 90% 80%,
+      rgba(217, 170, 92, 0.16),
+      transparent 45%
+    ),
+    linear-gradient(
+      125deg,
+      #fff8ed,
+      #f7e7cf
+    );
+}
+
+.gallery-main-container {
+  width: 100%;
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   GALLERY HEADING
+========================================= */
+
+.gallery-page-heading {
+  max-width: 800px;
+  margin: 0 auto 38px;
+  text-align: center;
+}
+
+.gallery-heading-icon {
+  width: 60px;
+  height: 60px;
+
+  display: grid;
+  place-items: center;
+
+  margin: 0 auto 17px;
+
+  border: 1px solid #e4c58a;
+  border-radius: 50%;
+
+  background: #fff0d3;
+  color: #ae751f;
+}
+
+.gallery-section-label {
+  margin: 0 0 9px;
+
+  color: #a15b15;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.gallery-page-heading h2 {
+  margin: 0 0 15px;
+
+  color: #123b28;
+  font-size: clamp(28px, 3.3vw, 43px);
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.gallery-page-description {
+  max-width: 680px;
+  margin: 0 auto;
+
+  color: #493829;
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.gallery-heading-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+
+  margin: 23px auto 0;
+  color: #b57b25;
+}
+
+.gallery-heading-divider span {
+  width: 75px;
+  height: 1px;
+  background: #c99d57;
+}
+
+/* =========================================
+   CATEGORY FILTERS
+========================================= */
+
+.gallery-filters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  margin: 0 auto 38px;
+}
+
+.gallery-filter-button {
+  min-height: 42px;
+  padding: 10px 22px;
+
+  border: 1px solid rgba(172, 111, 30, 0.45);
+  border-radius: 40px;
+
+  background: transparent;
+  color: #81501e;
+
+  font-family: var(--font-anek), sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.gallery-filter-button:hover {
+  background: #f1dfbd;
+}
+
+.gallery-filter-button.active {
+  background: #143d29;
+  border-color: #143d29;
+  color: #fff3d7;
+}
+
+.gallery-filter-button:focus-visible {
+  outline: 2px solid #b77a22;
+  outline-offset: 3px;
+}
+
+/* =========================================
+   PHOTO GRID
+========================================= */
+
+.gallery-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 23px;
+}
+
+.gallery-photo-card {
+  display: block;
+  min-width: 0;
+  width: 100%;
+
+  padding: 0;
+
+  overflow: hidden;
+  border: 1px solid rgba(185, 128, 48, 0.22);
+  border-radius: 17px;
+
+  background: #fff9ef;
+  box-shadow:
+    0 9px 27px rgba(103, 65, 23, 0.1);
+
+  text-align: left;
+  font-family: var(--font-anek), sans-serif;
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.gallery-photo-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 15px 32px rgba(103, 65, 23, 0.16);
+}
+
+.gallery-photo-card:focus-visible {
+  outline: 3px solid #b77a22;
+  outline-offset: 4px;
+}
+
+.gallery-photo-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.3;
+  overflow: hidden;
+  background: #254633;
+}
+
+.gallery-card-photo {
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.gallery-photo-card:hover .gallery-card-photo {
+  transform: scale(1.06);
+}
+
+.gallery-photo-zoom {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+
+  display: grid;
+  place-items: center;
+
+  width: 40px;
+  height: 40px;
+
+  border: 1px solid rgba(255, 231, 181, 0.7);
+  border-radius: 50%;
+
+  background: rgba(10, 39, 25, 0.8);
+  color: #f7d48a;
+}
+
+.gallery-photo-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  padding: 18px 20px 20px;
+}
+
+.gallery-photo-caption h3 {
+  margin: 0;
+
+  color: #153b2a;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.gallery-photo-caption > span {
+  color: #ad741e;
+}
+
+.gallery-photo-note {
+  max-width: 700px;
+  margin: 32px auto 0;
+
+  color: #7b6245;
+  font-size: 13px;
+  line-height: 1.75;
+  text-align: center;
+}
+
+/* =========================================
+   CONTACT SECTION
+========================================= */
+
+.gallery-page-contact {
+  position: relative;
+  padding: 78px 5% 85px;
+
+  background:
+    linear-gradient(
+      rgba(2, 31, 18, 0.92),
+      rgba(2, 31, 18, 0.94)
+    ),
+    url("/images/temple-hero.webp");
+
+  background-size: cover;
+  background-position: center;
+  color: #fff0d2;
+  text-align: center;
+}
+
+.gallery-contact-container {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.gallery-contact-container > svg {
+  margin-bottom: 18px;
+  color: #efc56a;
+}
+
+.gallery-contact-label {
+  margin: 0 0 10px;
+
+  color: #efc56a;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.gallery-contact-container h2 {
+  margin: 0 0 13px;
+
+  color: #fff0d2;
+  font-size: clamp(29px, 3.5vw, 44px);
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.gallery-contact-container > p:not(.gallery-contact-label) {
+  margin: 0 0 27px;
+
+  color: #eee3d0;
+  font-size: 17px;
+}
+
+.gallery-contact-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+
+  padding: 12px 25px;
+
+  border: 1.5px solid #e8bc62;
+  border-radius: 40px;
+
+  color: #112d1d;
+  background: #eec874;
+
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+
+  transition: background 0.25s ease;
+}
+
+.gallery-contact-button:hover {
+  background: #ffdd94;
+}
+
+/* =========================================
+   IMAGE LIGHTBOX
+========================================= */
+
+.gallery-lightbox {
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 65px 80px;
+
+  background: rgba(2, 15, 9, 0.96);
+  color: #fff4df;
+}
+
+.gallery-lightbox-content {
+  width: 100%;
+  max-width: 1100px;
+}
+
+.gallery-lightbox-image {
+  position: relative;
+  width: 100%;
+  height: min(72vh, 700px);
+}
+
+.gallery-lightbox-photo {
+  object-fit: contain;
+}
+
+.gallery-lightbox-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  padding: 18px 5px 0;
+}
+
+.gallery-lightbox-caption h3 {
+  margin: 0;
+
+  color: #f6e7ca;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.gallery-lightbox-caption span {
+  color: #e4c27f;
+  font-size: 14px;
+}
+
+.gallery-lightbox-close,
+.gallery-lightbox-prev,
+.gallery-lightbox-next {
+  position: absolute;
+
+  display: grid;
+  place-items: center;
+
+  width: 46px;
+  height: 46px;
+
+  border: 1px solid rgba(242, 198, 111, 0.5);
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.08);
+  color: #f8d994;
+
+  cursor: pointer;
+}
+
+.gallery-lightbox-close:hover,
+.gallery-lightbox-prev:hover,
+.gallery-lightbox-next:hover {
+  background: rgba(238, 196, 111, 0.19);
+}
+
+.gallery-lightbox-close:focus-visible,
+.gallery-lightbox-prev:focus-visible,
+.gallery-lightbox-next:focus-visible {
+  outline: 2px solid #f8d994;
+  outline-offset: 3px;
+}
+
+.gallery-lightbox-close {
+  top: 22px;
+  right: 25px;
+}
+
+.gallery-lightbox-prev {
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.gallery-lightbox-next {
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+  .gallery-page-hero {
+    min-height: 390px;
+  }
+
+  .gallery-photo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .gallery-lightbox {
+    padding: 70px 55px;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .gallery-page-hero {
+    min-height: 350px;
+    padding: 115px 20px 55px;
+    background-position: 65% center;
+  }
+
+  .gallery-page-hero h1 {
+    font-size: 39px;
+  }
+
+  .gallery-hero-intro {
+    font-size: 14px;
+  }
+
+  .gallery-breadcrumb {
+    font-size: 12px;
+  }
+
+  .gallery-page-main {
+    padding: 55px 20px 65px;
+  }
+
+  .gallery-page-heading {
+    margin-bottom: 30px;
+  }
+
+  .gallery-page-heading h2 {
+    font-size: 29px;
+  }
+
+  .gallery-page-description {
+    font-size: 15px;
+  }
+
+  .gallery-filters {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+
+    gap: 9px;
+    padding: 4px 0 12px;
+    margin-bottom: 20px;
+
+    scrollbar-width: thin;
+  }
+
+  .gallery-filter-button {
+    flex: 0 0 auto;
+    padding: 9px 16px;
+    font-size: 12px;
+  }
+
+  .gallery-photo-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .gallery-photo-image {
+    aspect-ratio: 1.35;
+  }
+
+  .gallery-photo-caption h3 {
+    font-size: 18px;
+  }
+
+  .gallery-page-contact {
+    padding: 60px 20px 65px;
+  }
+
+  .gallery-contact-container h2 {
+    font-size: 30px;
+  }
+
+  .gallery-contact-container > p:not(.gallery-contact-label) {
+    font-size: 15px;
+  }
+
+  .gallery-lightbox {
+    padding: 70px 12px 95px;
+  }
+
+  .gallery-lightbox-image {
+    height: min(62vh, 520px);
+  }
+
+  .gallery-lightbox-caption {
+    padding: 14px 9px 0;
+  }
+
+  .gallery-lightbox-caption h3 {
+    font-size: 15px;
+  }
+
+  .gallery-lightbox-close {
+    top: 15px;
+    right: 15px;
+  }
+
+  .gallery-lightbox-prev,
+  .gallery-lightbox-next {
+    top: auto;
+    bottom: 20px;
+    transform: none;
+
+    width: 42px;
+    height: 42px;
+  }
+
+  .gallery-lightbox-prev {
+    left: calc(50% - 55px);
+  }
+
+  .gallery-lightbox-next {
+    right: calc(50% - 55px);
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+  .gallery-page-hero h1 {
+    font-size: 34px;
+  }
+
+  .gallery-page-heading h2 {
+    font-size: 26px;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-photo-card,
+  .gallery-card-photo,
+  .gallery-contact-button {
+    transition: none;
+  }
+
+  .gallery-photo-card:hover,
+  .gallery-photo-card:hover .gallery-card-photo {
+    transform: none;
+  }
+}
