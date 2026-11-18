@@ -1,0 +1,253 @@
+
+/* =========================================
+   KIZHUR THERU TEMPLE
+   HERO SECTION
+========================================= */
+
+.temple-hero {
+  position: relative;
+  isolation: isolate;
+
+  width: 100%;
+  min-height: 540px;
+
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+
+  /* Image already contains green shading */
+  background-image: url("/images/temple-hero.webp");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+/* =========================================
+   HERO CONTENT
+========================================= */
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+
+  width: min(100%, 520px);
+  margin-left: 5%;
+
+  padding-top: 110px;
+  padding-bottom: 80px;
+
+  color: #fff4da;
+}
+
+/* =========================================
+   INTRO TEXT
+========================================= */
+
+.hero-intro {
+  margin: 0;
+
+  font-family: var(--font-anek), sans-serif;
+  font-size: clamp(17px, 1.65vw, 22px);
+  font-weight: 500;
+  line-height: 1.65;
+
+  color: #fff0d0;
+}
+
+/* =========================================
+   WELCOME HEADING
+========================================= */
+
+.hero-title {
+  margin: 4px 0 14px;
+
+  font-family: var(--font-anek), sans-serif;
+  font-size: clamp(44px, 4.4vw, 60px);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0;
+
+  color: #f5d693;
+}
+
+/* =========================================
+   GOLD DECORATIVE DIVIDER
+========================================= */
+
+.hero-divider {
+  width: 240px;
+  max-width: 100%;
+
+  margin: 12px 0 22px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #f2c65f;
+}
+
+.hero-divider > span:first-child,
+.hero-divider > span:last-child {
+  height: 1px;
+  flex: 1;
+  background: #d8b65f;
+}
+
+.hero-divider-symbol {
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* =========================================
+   HERO BUTTON
+========================================= */
+
+.hero-button {
+  width: fit-content;
+  max-width: 100%;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+
+  padding: 12px 24px;
+
+  border: 1.5px solid #f0c351;
+  border-radius: 40px;
+
+  background: rgba(5, 30, 15, 0.25);
+
+  color: #f8d47b;
+
+  font-family: var(--font-anek), sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5;
+
+  text-align: center;
+  text-decoration: none;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.hero-button:hover {
+  background: rgba(201, 143, 28, 0.2);
+  transform: translateY(-2px);
+}
+
+.hero-button:focus-visible {
+  outline: 2px solid #f8d47b;
+  outline-offset: 4px;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+  .temple-hero {
+    min-height: 550px;
+    background-position: 60% center;
+  }
+
+  .hero-content {
+    width: min(85%, 500px);
+    margin-left: 5%;
+
+    padding-top: 120px;
+    padding-bottom: 75px;
+  }
+
+  .hero-title {
+    font-size: clamp(44px, 5.5vw, 56px);
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .temple-hero {
+    min-height: 620px;
+    align-items: flex-end;
+
+    /* No additional gradient */
+    background-image: url("/images/temple-hero.webp");
+    background-size: cover;
+    background-position: 65% center;
+    background-repeat: no-repeat;
+  }
+
+  .hero-content {
+    width: 100%;
+    margin: 0;
+
+    padding: 150px 22px 105px;
+  }
+
+  .hero-intro {
+    font-size: 17px;
+    line-height: 1.55;
+  }
+
+  .hero-title {
+    margin: 5px 0 12px;
+
+    font-size: clamp(43px, 10vw, 56px);
+    line-height: 1.35;
+  }
+
+  .hero-divider {
+    width: 190px;
+    margin: 18px 0 22px;
+  }
+
+  .hero-button {
+    padding: 12px 18px;
+    gap: 10px;
+    font-size: 13px;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+  .hero-content {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .hero-intro {
+    font-size: 15px;
+  }
+
+  .hero-title {
+    font-size: 42px;
+  }
+
+  .hero-button {
+    font-size: 12px;
+    padding: 12px 14px;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-button {
+    transition: none;
+  }
+
+  .hero-button:hover {
+    transform: none;
+  }
+}

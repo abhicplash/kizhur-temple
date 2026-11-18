@@ -1,0 +1,386 @@
+
+/* =========================================
+   KIZHUR THERU TEMPLE
+   FOOTER
+========================================= */
+
+.temple-footer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  padding: 38px 4.5% 24px;
+
+  background:
+    radial-gradient(
+      circle at 70% 15%,
+      rgba(34, 75, 43, 0.32),
+      transparent 45%
+    ),
+    linear-gradient(
+      135deg,
+      #031d13 0%,
+      #08291a 55%,
+      #041b12 100%
+    );
+
+  color: #fff4df;
+  font-family: var(--font-anek), sans-serif;
+}
+
+/* =========================================
+   MAIN FOOTER GRID
+========================================= */
+
+.temple-footer-main {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.3fr)
+    minmax(0, 1.3fr)
+    minmax(0, 0.7fr)
+    minmax(0, 1fr);
+
+  align-items: center;
+  gap: 22px;
+}
+
+/* =========================================
+   TEMPLE BRAND
+========================================= */
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-width: 0;
+}
+
+.footer-logo {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #eabd56;
+}
+
+.footer-temple-name {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  color: #fff7e8;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* =========================================
+   CONTACT INFORMATION
+========================================= */
+
+.footer-contact {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  padding-left: 22px;
+  border-left: 1px solid rgba(225, 182, 84, 0.5);
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+
+  color: #f4ead7;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.footer-contact-item svg {
+  flex-shrink: 0;
+  color: #e8b951;
+}
+
+/* =========================================
+   SOCIAL MEDIA
+========================================= */
+
+.footer-social {
+  min-width: 0;
+
+  padding-left: 20px;
+  border-left: 1px solid rgba(225, 182, 84, 0.5);
+}
+
+.footer-social p {
+  margin: 0 0 11px;
+
+  color: #fff3da;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.footer-social-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-social-placeholder {
+  width: 31px;
+  height: 31px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: #f0c974;
+  color: #07301d;
+}
+
+.footer-facebook-icon {
+  font-family: Arial, sans-serif;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* =========================================
+   CONTACT BUTTON
+========================================= */
+
+.footer-action {
+  min-width: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footer-contact-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  max-width: 100%;
+  padding: 10px 14px;
+
+  border: 1.5px solid #e6b94c;
+  border-radius: 40px;
+
+  color: #f4cb69;
+  background: transparent;
+
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+
+  transition: background 0.25s ease;
+}
+
+.footer-contact-button:hover {
+  background: rgba(230, 185, 76, 0.12);
+}
+
+.footer-contact-button:focus-visible {
+  outline: 2px solid #e6b94c;
+  outline-offset: 3px;
+}
+
+.footer-contact-button svg {
+  flex-shrink: 0;
+}
+
+/* =========================================
+   GOLD DIVIDER — NO LOTUS
+========================================= */
+
+.footer-gold-divider {
+  width: 100%;
+  max-width: 1320px;
+  height: 2px;
+
+  margin: 32px auto 20px;
+
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #b88629 8%,
+    #edc66b 50%,
+    #b88629 92%,
+    transparent 100%
+  );
+}
+
+/* =========================================
+   FOOTER BOTTOM
+========================================= */
+
+.temple-footer-bottom {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.temple-footer-bottom p {
+  margin: 0;
+
+  color: #ebdfca;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.footer-bottom-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.footer-bottom-links a {
+  color: #f0dfbe;
+  font-size: 12px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.footer-bottom-links a:hover {
+  color: #e8b951;
+}
+
+.footer-bottom-links span {
+  color: #c29a48;
+}
+
+/* =========================================
+   SMALL DESKTOP
+========================================= */
+
+@media (max-width: 1200px) {
+  .temple-footer-main {
+    grid-template-columns:
+      minmax(0, 1.1fr)
+      minmax(0, 1.2fr)
+      minmax(0, 0.7fr);
+
+    gap: 24px;
+  }
+
+  .footer-action {
+    grid-column: 1 / -1;
+    justify-content: flex-end;
+  }
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+  .temple-footer-main {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+  }
+
+  .footer-social {
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .footer-action {
+    grid-column: auto;
+    justify-content: flex-start;
+  }
+
+  .temple-footer-bottom {
+    align-items: flex-start;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .temple-footer {
+    padding: 36px 20px 24px;
+  }
+
+  .temple-footer-main {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .footer-brand {
+    gap: 12px;
+  }
+
+  .footer-logo svg {
+    width: 43px;
+    height: 43px;
+  }
+
+  .footer-temple-name {
+    font-size: 13px;
+  }
+
+  .footer-contact,
+  .footer-social {
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .footer-contact-item {
+    font-size: 12px;
+  }
+
+  .footer-action {
+    grid-column: auto;
+    justify-content: flex-start;
+  }
+
+  .footer-gold-divider {
+    margin: 28px auto 19px;
+  }
+
+  .temple-footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 13px;
+  }
+
+  .temple-footer-bottom p {
+    font-size: 11px;
+  }
+
+  .footer-bottom-links a {
+    font-size: 11px;
+  }
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-contact-button {
+    transition: none;
+  }
+}

@@ -1,0 +1,48 @@
+
+:root {
+  --font-heading: var(--font-anek);
+  --font-body: var(--font-anek);
+
+  --temple-green: #082719;
+  --temple-gold: #f5d693;
+  --temple-cream: #fff4df;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-anek), sans-serif;
+  background: var(--temple-cream);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a,
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}

@@ -1,0 +1,225 @@
+/* =========================================
+   HOMEPAGE FESTIVALS SECTION
+========================================= */
+
+.home-festivals {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  padding: 38px 5% 42px;
+
+  background:
+    radial-gradient(circle at 80% 20%, rgba(55, 88, 45, 0.3), transparent 45%),
+    linear-gradient(135deg, #052719 0%, #103a25 50%, #062416 100%);
+
+  color: #fff4de;
+}
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.home-festivals-container {
+  width: 100%;
+  max-width: 1250px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 29% 1fr;
+  align-items: center;
+  gap: 32px;
+}
+
+/* =========================================
+   TEXT CONTENT
+========================================= */
+
+.home-festivals-content {
+  position: relative;
+}
+
+.festivals-label {
+  margin: 0 0 8px;
+
+  color: #e8be63;
+  font-family: var(--font-anek), sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.home-festivals-content h2 {
+  margin: 0 0 12px;
+
+  font-family: var(--font-anek), sans-serif;
+  font-size: clamp(25px, 2.5vw, 35px);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.festivals-description {
+  max-width: 330px;
+  margin: 0 0 22px;
+
+  font-size: 15px;
+  line-height: 1.7;
+  color: #f1e9d7;
+}
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.festivals-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  padding: 11px 21px;
+
+  border: 1.5px solid #e9bb55;
+  border-radius: 40px;
+
+  color: #f5cf77;
+  background: transparent;
+
+  font-family: var(--font-anek), sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.festivals-button:hover {
+  background: rgba(233, 187, 85, 0.13);
+  transform: translateY(-2px);
+}
+
+/* =========================================
+   FESTIVAL CARDS
+========================================= */
+
+.home-festival-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.home-festival-card {
+  position: relative;
+  display: block;
+
+  width: 100%;
+  aspect-ratio: 1.15;
+
+  overflow: hidden;
+  border-radius: 15px;
+  border: 1px solid #d5aa51;
+
+  background: #173a25;
+  text-decoration: none;
+}
+
+.festival-card-image {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.home-festival-card:hover .festival-card-image {
+  transform: scale(1.06);
+}
+
+.festival-card-overlay {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  padding: 20px 10px;
+
+  background: linear-gradient(
+    to top,
+    rgba(0, 22, 13, 0.94),
+    rgba(0, 22, 13, 0.03) 65%
+  );
+
+  text-align: center;
+}
+
+.festival-card-overlay h3 {
+  margin: 0;
+
+  color: #fff8e8;
+  font-family: var(--font-anek), sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+  .home-festivals {
+    padding: 50px 4%;
+  }
+
+  .home-festivals-container {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .festivals-description {
+    max-width: 600px;
+  }
+
+  .home-festival-card {
+    aspect-ratio: 1.1;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 650px) {
+  .home-festivals {
+    padding: 45px 20px 55px;
+  }
+
+  .home-festivals-content h2 {
+    font-size: 28px;
+  }
+
+  .home-festival-cards {
+    display: flex;
+    overflow-x: auto;
+    gap: 12px;
+
+    scroll-snap-type: x mandatory;
+    padding-bottom: 8px;
+  }
+
+  .home-festival-card {
+    flex: 0 0 78%;
+    aspect-ratio: 1.15;
+    scroll-snap-align: start;
+  }
+
+  .festival-card-overlay h3 {
+    font-size: 17px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .festival-card-image,
+  .festivals-button {
+    transition: none;
+  }
+}

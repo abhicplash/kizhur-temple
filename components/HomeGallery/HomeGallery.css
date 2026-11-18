@@ -1,0 +1,246 @@
+
+/* =========================================
+   HOME GALLERY & CONTACT
+========================================= */
+
+.home-gallery {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  padding: 55px 5% 60px;
+
+  background:
+    radial-gradient(
+      circle at 5% 90%,
+      rgba(204, 151, 75, 0.13),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #fff8ed,
+      #f8e6cd
+    );
+}
+
+.home-gallery-container {
+  width: 100%;
+  max-width: 1250px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1.55fr)
+    minmax(0, 0.95fr);
+
+  align-items: center;
+  gap: 30px;
+}
+
+/* =========================================
+   LEFT INTRODUCTION
+========================================= */
+
+.home-gallery-intro,
+.home-gallery-contact {
+  min-width: 0;
+}
+
+.home-gallery-label {
+  margin: 0 0 8px;
+
+  color: #98520d;
+  font-family: var(--font-anek), sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.home-gallery-intro h2,
+.home-gallery-contact h2 {
+  margin: 0 0 12px;
+
+  color: #123b28;
+  font-family: var(--font-anek), sans-serif;
+  font-size: clamp(23px, 2.2vw, 31px);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.home-gallery-intro > p:not(.home-gallery-label),
+.home-gallery-contact > p:not(.home-gallery-label) {
+  margin: 0 0 20px;
+
+  color: #3e3022;
+  font-family: var(--font-anek), sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* =========================================
+   GOLD OUTLINE BUTTON
+========================================= */
+
+.home-gallery-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 10px 19px;
+
+  border: 1.5px solid #b9781c;
+  border-radius: 40px;
+
+  background: transparent;
+  color: #8f4d0e;
+
+  font-family: var(--font-anek), sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.home-gallery-button:hover {
+  background: rgba(185, 120, 28, 0.1);
+  transform: translateY(-2px);
+}
+
+/* =========================================
+   IMAGE GALLERY
+========================================= */
+
+.home-gallery-images {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.home-gallery-image {
+  position: relative;
+  display: block;
+
+  width: 100%;
+  height: 190px;
+  overflow: hidden;
+
+  border-radius: 12px;
+  background: #d9c39f;
+}
+
+.home-gallery-image img {
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.home-gallery-image:hover img {
+  transform: scale(1.06);
+}
+
+/* =========================================
+   RIGHT CONTACT AREA
+========================================= */
+
+.home-gallery-contact {
+  position: relative;
+
+  padding-left: 26px;
+  border-left: 1px solid rgba(168, 109, 35, 0.35);
+}
+
+.home-gallery-bell {
+  position: absolute;
+  top: -4px;
+  left: -13px;
+
+  color: #b9781c;
+  background: #faead6;
+}
+
+.home-gallery-location {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  margin-top: 16px;
+  color: #8f5b22;
+
+  font-size: 12px;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1050px) {
+  .home-gallery-container {
+    grid-template-columns: 1fr 1.3fr;
+    gap: 25px;
+  }
+
+  .home-gallery-contact {
+    grid-column: 1 / -1;
+    padding-left: 0;
+    padding-top: 22px;
+
+    border-left: 0;
+    border-top: 1px solid rgba(168, 109, 35, 0.35);
+  }
+
+  .home-gallery-bell {
+    top: 9px;
+    left: auto;
+    right: 0;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 650px) {
+  .home-gallery {
+    padding: 45px 20px 55px;
+  }
+
+  .home-gallery-container {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .home-gallery-images {
+    gap: 8px;
+  }
+
+  .home-gallery-image {
+    height: 140px;
+    border-radius: 9px;
+  }
+
+  .home-gallery-contact {
+    grid-column: auto;
+  }
+
+  .home-gallery-intro h2,
+  .home-gallery-contact h2 {
+    font-size: 27px;
+  }
+}
+
+@media (max-width: 380px) {
+  .home-gallery-image {
+    height: 115px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-gallery-image img,
+  .home-gallery-button {
+    transition: none;
+  }
+}

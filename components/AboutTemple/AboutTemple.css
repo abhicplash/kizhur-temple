@@ -1,0 +1,199 @@
+/* =========================================
+   ABOUT TEMPLE SECTION
+========================================= */
+
+.about-temple {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  padding: 85px 5% 75px;
+
+  background:
+    radial-gradient(
+      ellipse at 90% 85%,
+      rgba(222, 182, 110, 0.2),
+      transparent 48%
+    ),
+    linear-gradient(135deg, #fff8ed 0%, #f8e9d2 100%);
+}
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.about-temple-container {
+  width: 100%;
+  max-width: 1250px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 43% 1fr;
+  align-items: center;
+  gap: clamp(35px, 5vw, 80px);
+}
+
+/* =========================================
+   DEITY IMAGE
+========================================= */
+
+.about-temple-image {
+  position: relative;
+  width: 100%;
+}
+
+.about-image-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.45;
+
+  overflow: hidden;
+  border-radius: 42% 12% 38% 14% / 16% 35% 14% 32%;
+
+  box-shadow: 0 12px 30px rgba(88, 49, 12, 0.13);
+}
+
+.about-deity-photo {
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.6s ease;
+}
+
+.about-image-frame:hover .about-deity-photo {
+  transform: scale(1.04);
+}
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.about-temple-content {
+  position: relative;
+  z-index: 2;
+}
+
+.about-temple-label {
+  margin: 0 0 12px;
+
+  color: #975010;
+  font-family: var(--font-anek), sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.about-temple-content h2 {
+  margin: 0 0 18px;
+
+  color: #123b28;
+  font-family: var(--font-anek), sans-serif;
+  font-size: clamp(25px, 2.7vw, 39px);
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.about-temple-description {
+  max-width: 620px;
+  margin: 0 0 25px;
+
+  color: #392c20;
+  font-family: var(--font-anek), sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.85;
+}
+
+/* =========================================
+   ABOUT BUTTON
+========================================= */
+
+.about-temple-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  padding: 11px 23px;
+
+  border: 1.5px solid #b87922;
+  border-radius: 40px;
+
+  color: #8c490b;
+  background: transparent;
+
+  font-family: var(--font-anek), sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.about-temple-button:hover {
+  background: rgba(191, 132, 41, 0.1);
+  transform: translateY(-2px);
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+  .about-temple {
+    padding: 75px 5% 65px;
+  }
+
+  .about-temple-container {
+    grid-template-columns: 42% 1fr;
+    gap: 30px;
+  }
+
+  .about-temple-content h2 {
+    font-size: 27px;
+  }
+
+  .about-temple-description {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 650px) {
+  .about-temple {
+    padding: 65px 20px 60px;
+  }
+
+  .about-temple-container {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .about-temple-image {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .about-temple-content h2 {
+    font-size: clamp(25px, 6vw, 31px);
+  }
+
+  .about-temple-description {
+    font-size: 15px;
+  }
+
+  .about-temple-button {
+    font-size: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-deity-photo,
+  .about-temple-button {
+    transition: none;
+  }
+}
