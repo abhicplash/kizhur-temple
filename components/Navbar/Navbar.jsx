@@ -9,15 +9,11 @@ import {
   Menu,
   X,
   Landmark,
-  HeartHandshake,
+  Lamp,
   ArrowUpRight,
 } from "lucide-react";
 
 import "./Navbar.css";
-
-/* =========================================
-   NAVIGATION LINKS
-========================================= */
 
 const links = [
   { name: "Home", href: "/" },
@@ -28,59 +24,81 @@ const links = [
   { name: "Contact", href: "/contact" },
 ];
 
-/* =========================================
-   NAVBAR
-========================================= */
-
 export default function Navbar() {
   const pathname = usePathname();
 
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
+  /* =========================================
+     SCROLL EFFECT
+  ========================================= */
+
   useEffect(() => {
-    const updateScroll = () => {
+    const handleScroll = () => {
       setIsScrolled(window.scrollY > 24);
     };
 
-    updateScroll();
+    handleScroll();
 
-    window.addEventListener("scroll", updateScroll, {
+    window.addEventListener("scroll", handleScroll, {
       passive: true,
     });
 
     return () => {
-      window.removeEventListener("scroll", updateScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  /* =========================================
+     CLOSE MENU ON PAGE CHANGE
+  ========================================= */
 
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
 
+  /* =========================================
+     CLOSE MENU WITH ESCAPE
+  ========================================= */
+
   useEffect(() => {
     if (!isOpen) return;
 
-    const handleEscape = (event) => {
+    const handleKeyDown = (event) => {
       if (event.key === "Escape") {
         setIsOpen(false);
       }
     };
 
-    window.addEventListener("keydown", handleEscape);
+    window.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      window.removeEventListener("keydown", handleEscape);
+      window.removeEventListener(
+        "keydown",
+        handleKeyDown
+      );
     };
   }, [isOpen]);
 
-  const closeMenu = () => setIsOpen(false);
+  /* =========================================
+     ACTIVE LINK CHECK
+  ========================================= */
 
-  const isActive = (href) =>
-    href === "/"
-      ? pathname === "/"
-      : pathname === href ||
-        pathname.startsWith(`${href}/`);
+  const isActive = (href) => {
+    if (href === "/") {
+      return pathname === "/";
+    }
+
+    return (
+      pathname === href ||
+      pathname.startsWith(`${href}/`)
+    );
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
 
   return (
     <header
@@ -102,11 +120,14 @@ export default function Navbar() {
           href="/"
           className="temple-brand"
           onClick={closeMenu}
-          aria-label="കിഴുർ തെരു ശ്രീ മഹാഗണപതി-ഭഗവതി ക്ഷേത്രം — Home"
+          aria-label="കിഴുർ തെരു ശ്രീ മഹാഗണപതി-ഭഗവതി ക്ഷേത്രം - Home"
         >
-          <span className="brand-logo" aria-hidden="true">
+          <span
+            className="brand-logo"
+            aria-hidden="true"
+          >
             <Landmark
-              size={32}
+              size={31}
               strokeWidth={1.25}
             />
           </span>
@@ -123,7 +144,7 @@ export default function Navbar() {
         </Link>
 
         {/* =====================================
-            DESKTOP + MOBILE NAVIGATION
+            NAVIGATION
         ===================================== */}
 
         <nav
@@ -146,6 +167,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
+                  scroll={true}
                   className={`temple-nav-link ${
                     active ? "active" : ""
                   }`}
@@ -167,10 +189,13 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* DONATE */}
+          {/* =====================================
+              TEMPLE OFFERING BUTTON
+          ===================================== */}
 
           <Link
             href="/donate"
+            scroll={true}
             className={`temple-donate ${
               isActive("/donate") ? "active" : ""
             }`}
@@ -181,17 +206,17 @@ export default function Navbar() {
             }
             onClick={closeMenu}
           >
-            <HeartHandshake
-              size={17}
-              strokeWidth={1.65}
+            <Lamp
+              size={18}
+              strokeWidth={1.5}
               aria-hidden="true"
             />
 
-            <span>Donate</span>
+            <span>Offer to Temple</span>
 
             <ArrowUpRight
               size={14}
-              strokeWidth={1.6}
+              strokeWidth={1.5}
               className="temple-donate-arrow"
               aria-hidden="true"
             />
@@ -204,7 +229,7 @@ export default function Navbar() {
         </nav>
 
         {/* =====================================
-            MOBILE TOGGLE
+            MOBILE MENU TOGGLE
         ===================================== */}
 
         <button
@@ -219,7 +244,9 @@ export default function Navbar() {
           }
           aria-expanded={isOpen}
           aria-controls="temple-primary-navigation"
-          onClick={() => setIsOpen((prev) => !prev)}
+          onClick={() => {
+            setIsOpen((previous) => !previous);
+          }}
         >
           {isOpen ? (
             <X
