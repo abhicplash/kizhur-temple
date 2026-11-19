@@ -1,70 +1,220 @@
 
 /* =========================================
-   TEMPLE NAVBAR
    KIZHUR THERU TEMPLE
+   NAVBAR — REFINED HERITAGE EDITION
 ========================================= */
 
 .temple-navbar {
+  --nav-green: #082b1c;
+  --nav-deep: #031e13;
+  --nav-gold: #e7bf73;
+  --nav-ivory: #fff7e8;
+  --nav-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  width: 100%;
+  z-index: 1000;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(1, 22, 12, 0.75),
+    rgba(1, 22, 12, 0.32) 70%,
+    transparent
+  );
+
+  color: var(--nav-ivory);
+
+  transition:
+    background 0.4s ease,
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
+}
+
+.temple-navbar *,
+.temple-navbar *::before,
+.temple-navbar *::after {
+  box-sizing: border-box;
+}
+
+/* =========================================
+   SCROLLED HEADER
+========================================= */
+
+.temple-navbar-scrolled,
+.temple-navbar-menu-open {
+  background: rgba(3, 34, 21, 0.96);
+
+  border-bottom: 1px solid
+    rgba(231, 191, 115, 0.19);
+
+  box-shadow:
+    0 8px 30px rgba(0, 15, 8, 0.15);
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Thin gold top line */
+
+.temple-navbar::before {
+  content: "";
+
   position: absolute;
   top: 0;
   left: 0;
+  right: 0;
+
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(236, 195, 113, 0.36),
+    transparent
+  );
+
+  pointer-events: none;
+}
+
+/* =========================================
+   MAIN NAVBAR CONTAINER
+========================================= */
+
+.temple-navbar-inner {
+  position: relative;
+
   width: 100%;
-  min-height: 86px;
-  z-index: 100;
+  max-width: 1500px;
+  min-height: 88px;
+
+  margin: 0 auto;
+  padding: 13px 4.5%;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 24px;
 
-  padding: 14px 4.5%;
+  transition: min-height 0.35s ease;
+}
 
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 18, 10, 0.62) 0%,
-    rgba(0, 18, 10, 0) 100%
-  );
+.temple-navbar-scrolled .temple-navbar-inner {
+  min-height: 76px;
 }
 
 /* =========================================
-   BRAND / LOGO
+   TEMPLE BRAND
 ========================================= */
 
 .temple-brand {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
-  flex-shrink: 0;
+  gap: 13px;
 
-  color: #fff;
+  min-width: 0;
+  flex: 0 1 auto;
+
+  color: inherit;
   text-decoration: none;
 }
 
-.brand-logo {
-  width: 58px;
-  height: 58px;
+/* =========================================
+   GOLD EMBLEM
+========================================= */
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.brand-logo {
+  position: relative;
+
+  display: grid;
+  place-items: center;
   flex-shrink: 0;
 
-  color: #e8b94f;
+  width: 56px;
+  height: 56px;
+
+  border: 1px solid
+    rgba(233, 192, 112, 0.43);
+
+  border-radius: 12px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(233, 192, 112, 0.12),
+    rgba(233, 192, 112, 0.025)
+  );
+
+  color: #e9c47c;
+
+  box-shadow:
+    inset 0 1px 0
+      rgba(255, 236, 186, 0.07);
+
+  transition:
+    border-color 0.35s ease,
+    color 0.35s ease,
+    background 0.35s ease,
+    transform 0.45s var(--nav-ease);
 }
+
+.brand-logo::after {
+  content: "";
+
+  position: absolute;
+  inset: 4px;
+
+  border: 1px solid
+    rgba(233, 192, 112, 0.1);
+
+  border-radius: 8px;
+
+  pointer-events: none;
+}
+
+.temple-brand:hover .brand-logo {
+  color: #ffdfa0;
+
+  border-color:
+    rgba(246, 207, 132, 0.75);
+
+  background:
+    rgba(235, 194, 108, 0.12);
+
+  transform: translateY(-2px);
+}
+
+/* =========================================
+   MALAYALAM BRAND NAME
+========================================= */
 
 .brand-name {
   display: flex;
   flex-direction: column;
   gap: 2px;
 
-  font-family: var(--font-heading), serif;
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 1.45;
-  letter-spacing: 0;
-  white-space: nowrap;
+  min-width: 0;
 
-  color: #fff8ec;
+  font-family: var(--font-anek), sans-serif;
+  line-height: 1.48;
+  white-space: nowrap;
+}
+
+.brand-name-first {
+  color: #e9cc91;
+
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.brand-name-second {
+  color: #fff7e8;
+
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.1px;
 }
 
 /* =========================================
@@ -76,149 +226,284 @@
   align-items: center;
   justify-content: flex-end;
 
-  gap: clamp(12px, 1.65vw, 25px);
+  gap: clamp(15px, 1.75vw, 29px);
+
   min-width: 0;
 }
 
-.temple-nav-links > a {
+/* Hide mobile-only elements */
+
+.temple-nav-menu-heading,
+.temple-nav-mobile-footer {
+  display: none;
+}
+
+.temple-nav-menu-items {
+  display: flex;
+  align-items: center;
+
+  gap: clamp(15px, 1.75vw, 29px);
+}
+
+/* =========================================
+   NAVIGATION LINKS
+========================================= */
+
+.temple-nav-links .temple-nav-link {
   position: relative;
+
+  display: inline-flex;
+  align-items: center;
+
   flex-shrink: 0;
 
-  font-family: Arial, sans-serif;
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 1.5;
+  padding: 12px 0;
 
-  color: #fff;
+  color: rgba(255, 248, 233, 0.83);
+
+  font-family: Arial, sans-serif;
+  font-size: 12.5px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.15px;
+
   text-decoration: none;
   white-space: nowrap;
 
-  transition: color 0.25s ease;
+  transition: color 0.3s ease;
 }
 
-.temple-nav-links > a:hover,
-.temple-nav-links > a.active {
-  color: #f5c35d;
+.temple-nav-links .temple-nav-link:hover,
+.temple-nav-links .temple-nav-link.active {
+  color: #f2d18e;
 }
 
-.temple-nav-links > a.active::after {
+/* Refined underline */
+
+.temple-nav-link::after {
   content: "";
+
   position: absolute;
+  left: 50%;
+  bottom: 4px;
 
-  left: 0;
-  right: 0;
-  bottom: -9px;
+  width: 0;
+  height: 1px;
 
-  height: 2px;
-  background: #eab74c;
+  background: linear-gradient(
+    90deg,
+    rgba(233, 192, 112, 0.1),
+    #e9c47c,
+    rgba(233, 192, 112, 0.1)
+  );
+
+  transform: translateX(-50%);
+
+  transition:
+    width 0.4s var(--nav-ease);
+}
+
+.temple-nav-link:hover::after,
+.temple-nav-link.active::after {
+  width: 100%;
+}
+
+/* Desktop arrows hidden */
+
+.temple-nav-link-arrow {
+  display: none;
 }
 
 /* =========================================
    DONATE BUTTON
 ========================================= */
 
-.temple-nav-links > .temple-donate {
+.temple-nav-links .temple-donate {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  flex-shrink: 0;
 
-  padding: 11px 22px;
-  border-radius: 30px;
+  gap: 9px;
+  min-height: 42px;
+  padding: 10px 20px;
+
+  border: 1px solid #eac47c;
+  border-radius: 40px;
 
   background: linear-gradient(
     135deg,
-    #f8da99 0%,
-    #edb852 100%
+    #f7dfaa,
+    #e5b866
   );
 
-  color: #3c270a;
+  color: #173522;
+
   font-family: Arial, sans-serif;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.2px;
 
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+  text-decoration: none;
+  white-space: nowrap;
+
+  box-shadow:
+    0 5px 17px rgba(0, 0, 0, 0.1);
+
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s var(--nav-ease);
 }
 
-.temple-nav-links > .temple-donate:hover {
-  color: #3c270a;
-  background: #ffdc89;
+.temple-nav-links .temple-donate:hover {
+  background: #ffe1a4;
+
+  border-color: #ffe1a4;
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.16);
+
+  transform: translateY(-2px);
 }
 
-.temple-nav-links > .temple-donate::after {
-  display: none;
+.temple-donate-arrow {
+  opacity: 0.65;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.temple-donate:hover .temple-donate-arrow {
+  opacity: 1;
+  transform: translate(2px, -2px);
 }
 
 /* =========================================
-   MOBILE MENU BUTTON
+   MOBILE MENU TOGGLE
 ========================================= */
 
 .temple-menu-toggle {
   display: none;
   align-items: center;
   justify-content: center;
-
-  width: 40px;
-  height: 40px;
   flex-shrink: 0;
 
-  border: none;
-  background: transparent;
-  color: #fff;
+  width: 43px;
+  height: 43px;
+
+  padding: 0;
+
+  border: 1px solid
+    rgba(236, 197, 123, 0.38);
+
+  border-radius: 10px;
+
+  background:
+    rgba(236, 197, 123, 0.06);
+
+  color: #f5d596;
 
   cursor: pointer;
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.temple-menu-toggle:hover,
+.temple-menu-toggle.is-active {
+  background:
+    rgba(236, 197, 123, 0.13);
+
+  border-color:
+    rgba(236, 197, 123, 0.7);
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+.temple-navbar a:focus-visible,
+.temple-menu-toggle:focus-visible {
+  outline: 2px solid #f4cf86;
+  outline-offset: 4px;
 }
 
 /* =========================================
    SMALL DESKTOP
 ========================================= */
 
-@media (max-width: 1200px) {
-  .temple-navbar {
-    padding: 14px 3.5%;
-    gap: 14px;
-  }
-
-  .brand-name {
-    font-size: 13px;
+@media (max-width: 1280px) {
+  .temple-navbar-inner {
+    padding-left: 3.2%;
+    padding-right: 3.2%;
+    gap: 15px;
   }
 
   .brand-logo {
-    width: 48px;
-    height: 48px;
+    width: 49px;
+    height: 49px;
   }
 
-  .temple-nav-links {
-    gap: 12px;
+  .brand-logo svg {
+    width: 29px;
+    height: 29px;
   }
 
-  .temple-nav-links > a {
+  .brand-name-first {
+    font-size: 11px;
+  }
+
+  .brand-name-second {
+    font-size: 13px;
+  }
+
+  .temple-nav-links,
+  .temple-nav-menu-items {
+    gap: 15px;
+  }
+
+  .temple-nav-links .temple-nav-link {
     font-size: 12px;
   }
 
-  .temple-nav-links > .temple-donate {
-    padding: 10px 16px;
+  .temple-nav-links .temple-donate {
+    padding: 10px 15px;
   }
 }
 
 /* =========================================
-   TABLET NAVIGATION
+   TABLET AND MOBILE NAVIGATION
 ========================================= */
 
-@media (max-width: 1000px) {
-  .temple-navbar {
+@media (max-width: 1080px) {
+  .temple-navbar-inner {
     min-height: 76px;
-    padding: 14px 4%;
+    padding: 12px 4%;
   }
 
-  .brand-name {
-    font-size: 13px;
-    white-space: normal;
+  .temple-navbar-scrolled
+  .temple-navbar-inner {
+    min-height: 72px;
+  }
+
+  .brand-name-first {
+    font-size: 12px;
+  }
+
+  .brand-name-second {
+    font-size: 14px;
   }
 
   .temple-menu-toggle {
     display: inline-flex;
   }
+
+  /* Mobile dropdown */
 
   .temple-nav-links {
     position: absolute;
@@ -226,39 +511,158 @@
     left: 0;
     right: 0;
 
-    display: none;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+
+    gap: 0;
+    min-width: 0;
+
+    max-height: calc(100dvh - 76px);
+    padding: 23px 5% 26px;
+
+    overflow-y: auto;
+
+    background: linear-gradient(
+      160deg,
+      rgba(6, 43, 27, 0.99),
+      rgba(3, 30, 19, 0.99)
+    );
+
+    border-top: 1px solid
+      rgba(232, 190, 107, 0.2);
+
+    box-shadow:
+      0 22px 35px rgba(0, 17, 9, 0.25);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translateY(-10px);
+
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease,
+      transform 0.35s var(--nav-ease);
+  }
+
+  .temple-nav-links.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    transform: translateY(0);
+  }
+
+  /* Menu eyebrow */
+
+  .temple-nav-menu-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin: 0 0 13px;
+    padding: 0 3px 16px;
+
+    border-bottom: 1px solid
+      rgba(232, 190, 107, 0.18);
+
+    color: #e6bf7a;
+
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .temple-nav-menu-heading
+  span:last-child {
+    font-size: 15px;
+    letter-spacing: 0;
+  }
+
+  /* Stacked links */
+
+  .temple-nav-menu-items {
+    display: flex;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
 
-    padding: 12px 24px 24px;
-
-    background: rgba(3, 37, 23, 0.98);
-    border-top: 1px solid rgba(225, 182, 84, 0.25);
-
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+    width: 100%;
   }
 
-  .temple-nav-links.open {
+  .temple-nav-links .temple-nav-link {
     display: flex;
-  }
+    align-items: center;
+    justify-content: space-between;
 
-  .temple-nav-links > a {
-    padding: 13px 4px;
+    width: 100%;
+    padding: 14px 5px;
+
+    border-bottom: 1px solid
+      rgba(255, 239, 204, 0.09);
+
+    color: rgba(255, 246, 226, 0.87);
+
     font-size: 14px;
+    letter-spacing: 0.2px;
   }
 
-  .temple-nav-links > a.active::after {
-    left: 4px;
-    right: auto;
-    bottom: 7px;
+  .temple-nav-link-arrow {
+    display: block;
+
+    color: #d8b779;
+    opacity: 0.7;
+  }
+
+  .temple-nav-links
+  .temple-nav-link.active {
+    color: #f4d18b;
+  }
+
+  .temple-nav-link::after {
+    left: 0;
+    bottom: 0;
+
+    transform: none;
+  }
+
+  .temple-nav-link.active::after {
     width: 35px;
   }
 
-  .temple-nav-links > .temple-donate {
+  /* Donate on mobile */
+
+  .temple-nav-links .temple-donate {
     align-self: flex-start;
-    margin-top: 15px;
-    padding: 12px 28px;
+    margin-top: 23px;
+
+    min-height: 46px;
+    padding: 12px 25px;
+
+    font-size: 13px;
+  }
+
+  /* Closing caption */
+
+  .temple-nav-mobile-footer {
+    display: block;
+
+    margin-top: 25px;
+    padding-top: 19px;
+
+    border-top: 1px solid
+      rgba(232, 190, 107, 0.15);
+
+    color: rgba(240, 217, 174, 0.55);
+
+    font-family: var(--font-anek), sans-serif;
+    font-size: 11px;
+    line-height: 1.7;
   }
 }
 
@@ -267,72 +671,116 @@
 ========================================= */
 
 @media (max-width: 600px) {
-  .temple-navbar {
-    min-height: 74px;
-    padding: 12px 18px;
-    gap: 10px;
+  .temple-navbar-inner {
+    min-height: 72px;
+    padding: 11px 18px;
+    gap: 12px;
+  }
+
+  .temple-navbar-scrolled
+  .temple-navbar-inner {
+    min-height: 68px;
   }
 
   .temple-brand {
     flex: 1;
     min-width: 0;
-    gap: 9px;
+    gap: 10px;
   }
 
   .brand-logo {
-    width: 40px;
-    height: 44px;
+    width: 43px;
+    height: 43px;
+    border-radius: 10px;
   }
 
   .brand-logo svg {
-    width: 36px;
-    height: 36px;
+    width: 27px;
+    height: 27px;
   }
 
   .brand-name {
     min-width: 0;
-    font-size: 11px;
-    font-weight: 500;
+    white-space: normal;
+    gap: 1px;
+  }
+
+  .brand-name-first {
+    font-size: 10.5px;
+  }
+
+  .brand-name-second {
+    font-size: 11.5px;
     line-height: 1.45;
   }
 
   .temple-menu-toggle {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .temple-nav-links {
+    max-height: calc(100dvh - 72px);
+    padding: 20px 22px 26px;
+  }
+
+  .temple-nav-links .temple-nav-link {
+    padding: 13px 3px;
+    font-size: 13.5px;
   }
 }
 
 /* =========================================
-   EXTRA SMALL MOBILE
+   VERY SMALL MOBILE
 ========================================= */
 
-@media (max-width: 360px) {
-  .temple-navbar {
-    padding: 12px 12px;
-  }
-
-  .brand-name {
-    font-size: 10px;
+@media (max-width: 370px) {
+  .temple-navbar-inner {
+    padding-left: 12px;
+    padding-right: 12px;
+    gap: 8px;
   }
 
   .brand-logo {
-    width: 34px;
+    width: 38px;
+    height: 40px;
   }
 
   .brand-logo svg {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
+  }
+
+  .brand-name-first {
+    font-size: 9.5px;
+  }
+
+  .brand-name-second {
+    font-size: 10px;
   }
 }
 
-/* Anek Malayalam throughout the navbar */
+/* =========================================
+   REDUCED MOTION
+========================================= */
 
-.brand-name {
-  font-family: var(--font-anek), sans-serif;
-  font-weight: 500;
-}
+@media (prefers-reduced-motion: reduce) {
+  .temple-navbar,
+  .temple-navbar-inner,
+  .brand-logo,
+  .temple-nav-links,
+  .temple-nav-link,
+  .temple-nav-link::after,
+  .temple-donate,
+  .temple-donate-arrow,
+  .temple-menu-toggle {
+    transition: none !important;
+  }
 
-.temple-nav-links > a,
-.temple-nav-links > .temple-donate {
-  font-family: var(--font-anek), sans-serif;
+  .temple-brand:hover .brand-logo,
+  .temple-nav-links .temple-donate:hover,
+  .temple-donate:hover
+  .temple-donate-arrow {
+    transform: none !important;
+  }
 }

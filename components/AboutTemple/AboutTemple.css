@@ -1,120 +1,322 @@
+
 /* =========================================
-   ABOUT TEMPLE SECTION
+   KIZHUR THERU TEMPLE
+   PREMIUM ABOUT SECTION
 ========================================= */
 
 .about-temple {
   position: relative;
+  isolation: isolate;
+
   width: 100%;
   overflow: hidden;
 
-  padding: 85px 5% 75px;
+  padding: 100px 5% 95px;
 
   background:
     radial-gradient(
-      ellipse at 90% 85%,
-      rgba(222, 182, 110, 0.2),
+      ellipse at 88% 82%,
+      rgba(213, 168, 92, 0.17),
       transparent 48%
     ),
-    linear-gradient(135deg, #fff8ed 0%, #f8e9d2 100%);
+    linear-gradient(
+      135deg,
+      #fff9ee 0%,
+      #f8e9d2 100%
+    );
+
+  color: #123b28;
+}
+
+/* Subtle decorative light */
+
+.about-temple::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+
+  top: -180px;
+  right: -140px;
+
+  width: 520px;
+  height: 520px;
+
+  border: 1px solid rgba(185, 135, 66, 0.1);
+  border-radius: 50%;
+
+  pointer-events: none;
 }
 
 /* =========================================
-   CONTAINER
+   MAIN CONTAINER
 ========================================= */
 
 .about-temple-container {
+  position: relative;
+
   width: 100%;
   max-width: 1250px;
   margin: 0 auto;
 
   display: grid;
-  grid-template-columns: 43% 1fr;
+  grid-template-columns:
+    minmax(0, 43%)
+    minmax(0, 1fr);
+
   align-items: center;
-  gap: clamp(35px, 5vw, 80px);
+  gap: clamp(42px, 6vw, 85px);
+}
+
+/* Reveal wrappers must respect the grid */
+
+.home-about-image-reveal,
+.home-about-content-reveal {
+  min-width: 0;
+  width: 100%;
 }
 
 /* =========================================
-   DEITY IMAGE
+   IMAGE COMPOSITION
 ========================================= */
 
 .about-temple-image {
   position: relative;
   width: 100%;
+  padding: 14px;
+}
+
+.about-image-outer-frame {
+  position: relative;
+  padding: 7px;
+
+  border: 1px solid rgba(177, 121, 43, 0.5);
+  border-radius:
+    42% 12% 38% 14% /
+    16% 35% 14% 32%;
+
+  background: rgba(255, 249, 234, 0.55);
+
+  box-shadow:
+    0 18px 46px rgba(88, 49, 12, 0.12);
 }
 
 .about-image-frame {
   position: relative;
+
   width: 100%;
   aspect-ratio: 1.45;
 
   overflow: hidden;
-  border-radius: 42% 12% 38% 14% / 16% 35% 14% 32%;
 
-  box-shadow: 0 12px 30px rgba(88, 49, 12, 0.13);
+  border-radius:
+    42% 12% 38% 14% /
+    16% 35% 14% 32%;
 }
 
 .about-deity-photo {
   object-fit: cover;
   object-position: center;
-  transition: transform 0.6s ease;
+
+  transform: scale(1);
+  transition:
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.about-image-frame:hover .about-deity-photo {
-  transform: scale(1.04);
+.about-temple-image:hover .about-deity-photo {
+  transform: scale(1.055);
 }
 
 /* =========================================
-   CONTENT
+   GOLD FRAME CORNERS
+========================================= */
+
+.about-frame-accent {
+  position: absolute;
+  width: 46px;
+  height: 46px;
+
+  pointer-events: none;
+}
+
+.about-frame-accent-top {
+  top: 0;
+  left: 0;
+
+  border-top: 1px solid #c39a56;
+  border-left: 1px solid #c39a56;
+}
+
+.about-frame-accent-bottom {
+  right: 0;
+  bottom: 0;
+
+  border-right: 1px solid #c39a56;
+  border-bottom: 1px solid #c39a56;
+}
+
+/* =========================================
+   ORNAMENTAL SEAL
+========================================= */
+
+.about-temple-seal {
+  position: absolute;
+  right: -5px;
+  bottom: 15px;
+
+  width: 62px;
+  height: 62px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(183, 123, 35, 0.6);
+  border-radius: 50%;
+
+  background: #fff2da;
+  color: #ae741d;
+
+  font-size: 26px;
+  line-height: 1;
+
+  box-shadow:
+    0 8px 22px rgba(98, 59, 18, 0.12);
+
+  transition:
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about-temple-image:hover .about-temple-seal {
+  transform: rotate(45deg);
+}
+
+/* =========================================
+   RIGHT CONTENT
 ========================================= */
 
 .about-temple-content {
   position: relative;
-  z-index: 2;
+  min-width: 0;
 }
+
+/* Eyebrow heading */
 
 .about-temple-label {
-  margin: 0 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 
-  color: #975010;
+  margin: 0 0 17px;
+
+  color: #98520f;
+
   font-family: var(--font-anek), sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
+  line-height: 1.5;
 }
+
+.about-label-line {
+  display: inline-block;
+  flex-shrink: 0;
+
+  width: 34px;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    #b67e2c,
+    #e0b86b
+  );
+}
+
+/* =========================================
+   TEMPLE HEADING
+========================================= */
 
 .about-temple-content h2 {
   margin: 0 0 18px;
 
-  color: #123b28;
+  color: #103927;
+
   font-family: var(--font-anek), sans-serif;
-  font-size: clamp(25px, 2.7vw, 39px);
+  font-size: clamp(27px, 2.7vw, 39px);
   font-weight: 600;
-  line-height: 1.45;
+  line-height: 1.5;
+
+  letter-spacing: -0.3px;
+  overflow-wrap: anywhere;
 }
 
-.about-temple-description {
-  max-width: 620px;
-  margin: 0 0 25px;
-
-  color: #392c20;
-  font-family: var(--font-anek), sans-serif;
-  font-size: 17px;
-  font-weight: 400;
-  line-height: 1.85;
+.about-temple-content h2 span {
+  color: #123b28;
 }
 
 /* =========================================
-   ABOUT BUTTON
+   GOLD ORNAMENTAL DIVIDER
+========================================= */
+
+.about-temple-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  width: 145px;
+  margin: 4px 0 25px;
+
+  color: #b78328;
+}
+
+.about-temple-divider-line {
+  height: 1px;
+  flex: 1;
+
+  background: linear-gradient(
+    90deg,
+    #b78328,
+    rgba(183, 131, 40, 0.1)
+  );
+}
+
+.about-temple-divider-symbol {
+  font-size: 15px;
+  line-height: 1;
+}
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.about-temple-description {
+  max-width: 610px;
+  margin: 0 0 29px;
+
+  color: #443427;
+
+  font-family: var(--font-anek), sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.95;
+}
+
+/* =========================================
+   ELEGANT OUTLINE BUTTON
 ========================================= */
 
 .about-temple-button {
+  position: relative;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 13px;
 
-  padding: 11px 23px;
+  max-width: 100%;
+  padding: 12px 24px;
 
-  border: 1.5px solid #b87922;
+  overflow: hidden;
+
+  border: 1px solid #b87922;
   border-radius: 40px;
 
   color: #8c490b;
@@ -126,13 +328,34 @@
   text-decoration: none;
 
   transition:
-    background 0.25s ease,
-    transform 0.25s ease;
+    background 0.35s ease,
+    color 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .about-temple-button:hover {
-  background: rgba(191, 132, 41, 0.1);
-  transform: translateY(-2px);
+  background: rgba(191, 132, 41, 0.11);
+
+  color: #754007;
+
+  box-shadow:
+    0 7px 20px rgba(105, 69, 23, 0.08);
+
+  transform: translateY(-3px);
+}
+
+.about-temple-button svg {
+  transition: transform 0.35s ease;
+}
+
+.about-temple-button:hover svg {
+  transform: translateX(5px);
+}
+
+.about-temple-button:focus-visible {
+  outline: 2px solid #ad781d;
+  outline-offset: 4px;
 }
 
 /* =========================================
@@ -141,12 +364,19 @@
 
 @media (max-width: 900px) {
   .about-temple {
-    padding: 75px 5% 65px;
+    padding: 80px 5% 75px;
   }
 
   .about-temple-container {
-    grid-template-columns: 42% 1fr;
+    grid-template-columns:
+      minmax(0, 42%)
+      minmax(0, 1fr);
+
     gap: 30px;
+  }
+
+  .about-temple-image {
+    padding: 8px;
   }
 
   .about-temple-content h2 {
@@ -155,7 +385,13 @@
 
   .about-temple-description {
     font-size: 15px;
-    line-height: 1.8;
+    line-height: 1.85;
+  }
+
+  .about-temple-seal {
+    width: 50px;
+    height: 50px;
+    font-size: 21px;
   }
 }
 
@@ -165,12 +401,12 @@
 
 @media (max-width: 650px) {
   .about-temple {
-    padding: 65px 20px 60px;
+    padding: 65px 20px 65px;
   }
 
   .about-temple-container {
     grid-template-columns: 1fr;
-    gap: 35px;
+    gap: 36px;
   }
 
   .about-temple-image {
@@ -180,20 +416,59 @@
 
   .about-temple-content h2 {
     font-size: clamp(25px, 6vw, 31px);
+    line-height: 1.5;
   }
 
   .about-temple-description {
     font-size: 15px;
+    line-height: 1.85;
   }
 
   .about-temple-button {
     font-size: 14px;
   }
+
+  .about-temple-seal {
+    right: 0;
+    bottom: 5px;
+  }
 }
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+  .about-temple-content h2 {
+    font-size: 24px;
+  }
+
+  .about-temple-label {
+    font-size: 13px;
+  }
+
+  .about-temple-button {
+    padding: 11px 18px;
+    font-size: 13px;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
 
 @media (prefers-reduced-motion: reduce) {
   .about-deity-photo,
-  .about-temple-button {
-    transition: none;
+  .about-temple-seal,
+  .about-temple-button,
+  .about-temple-button svg {
+    transition: none !important;
+  }
+
+  .about-temple-image:hover .about-deity-photo,
+  .about-temple-image:hover .about-temple-seal,
+  .about-temple-button:hover,
+  .about-temple-button:hover svg {
+    transform: none !important;
   }
 }

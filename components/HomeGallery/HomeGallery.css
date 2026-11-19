@@ -1,27 +1,53 @@
 
 /* =========================================
-   HOME GALLERY & CONTACT
+   KIZHUR THERU TEMPLE
+   PREMIUM HOME GALLERY & CONTACT
 ========================================= */
 
 .home-gallery {
   position: relative;
+  isolation: isolate;
+
   width: 100%;
   overflow: hidden;
 
-  padding: 55px 5% 60px;
+  padding: 65px 5% 70px;
 
   background:
     radial-gradient(
       circle at 5% 90%,
-      rgba(204, 151, 75, 0.13),
+      rgba(204, 151, 75, 0.15),
       transparent 35%
     ),
     linear-gradient(
       135deg,
-      #fff8ed,
-      #f8e6cd
+      #fff8ed 0%,
+      #f8e6cd 100%
     );
 }
+
+/* Subtle heritage-inspired decoration */
+
+.home-gallery::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+
+  left: -140px;
+  bottom: -220px;
+
+  width: 450px;
+  height: 450px;
+
+  border: 1px solid rgba(185, 135, 66, 0.1);
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+/* =========================================
+   MAIN THREE-COLUMN GRID
+========================================= */
 
 .home-gallery-container {
   width: 100%;
@@ -38,23 +64,57 @@
   gap: 30px;
 }
 
+/* Reveal wrapper sizing */
+
+.home-gallery-intro-reveal,
+.home-gallery-contact-reveal,
+.home-gallery-image-reveal {
+  min-width: 0;
+  width: 100%;
+}
+
 /* =========================================
-   LEFT INTRODUCTION
+   LEFT AND RIGHT CONTENT
 ========================================= */
 
 .home-gallery-intro,
 .home-gallery-contact {
+  position: relative;
   min-width: 0;
 }
 
+/* Gold eyebrow label */
+
 .home-gallery-label {
-  margin: 0 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin: 0 0 12px;
 
   color: #98520d;
   font-family: var(--font-anek), sans-serif;
   font-size: 13px;
   font-weight: 600;
+  line-height: 1.5;
 }
+
+.home-gallery-label-line {
+  flex-shrink: 0;
+
+  width: 28px;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    #b47d2d,
+    rgba(180, 125, 45, 0.2)
+  );
+}
+
+/* =========================================
+   HEADINGS
+========================================= */
 
 .home-gallery-intro h2,
 .home-gallery-contact h2 {
@@ -64,82 +124,242 @@
   font-family: var(--font-anek), sans-serif;
   font-size: clamp(23px, 2.2vw, 31px);
   font-weight: 600;
-  line-height: 1.4;
-}
-
-.home-gallery-intro > p:not(.home-gallery-label),
-.home-gallery-contact > p:not(.home-gallery-label) {
-  margin: 0 0 20px;
-
-  color: #3e3022;
-  font-family: var(--font-anek), sans-serif;
-  font-size: 14px;
-  line-height: 1.7;
+  line-height: 1.45;
 }
 
 /* =========================================
-   GOLD OUTLINE BUTTON
+   ORNAMENTAL GOLD DIVIDER
+========================================= */
+
+.home-gallery-gold-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  width: 112px;
+  margin: 0 0 18px;
+
+  color: #b47d2d;
+}
+
+.home-gallery-gold-divider > span:first-child {
+  flex: 1;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    #b47d2d,
+    rgba(180, 125, 45, 0.12)
+  );
+}
+
+.home-gallery-divider-symbol {
+  font-size: 13px;
+  line-height: 1;
+}
+
+/* =========================================
+   DESCRIPTION TEXT
+========================================= */
+
+.home-gallery-intro > p:not(.home-gallery-label),
+.home-gallery-contact > p:not(.home-gallery-label) {
+  margin: 0 0 22px;
+
+  color: #443426;
+  font-family: var(--font-anek), sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.85;
+}
+
+/* =========================================
+   PREMIUM GOLD OUTLINE BUTTON
 ========================================= */
 
 .home-gallery-button {
+  position: relative;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 11px;
 
-  padding: 10px 19px;
+  max-width: 100%;
+  padding: 11px 20px;
 
-  border: 1.5px solid #b9781c;
+  border: 1px solid #b9781c;
   border-radius: 40px;
 
-  background: transparent;
+  background: rgba(255, 255, 255, 0.08);
   color: #8f4d0e;
 
   font-family: var(--font-anek), sans-serif;
   font-size: 14px;
   font-weight: 600;
+  line-height: 1.5;
   text-decoration: none;
 
   transition:
-    background 0.25s ease,
-    transform 0.25s ease;
+    background 0.35s ease,
+    color 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .home-gallery-button:hover {
-  background: rgba(185, 120, 28, 0.1);
-  transform: translateY(-2px);
+  background: rgba(185, 120, 28, 0.11);
+  color: #754007;
+
+  box-shadow:
+    0 7px 19px rgba(105, 69, 23, 0.08);
+
+  transform: translateY(-3px);
+}
+
+.home-gallery-button svg {
+  flex-shrink: 0;
+  transition: transform 0.35s ease;
+}
+
+.home-gallery-button:hover svg {
+  transform: translateX(5px);
+}
+
+.home-gallery-button:focus-visible {
+  outline: 2px solid #ad781d;
+  outline-offset: 4px;
 }
 
 /* =========================================
-   IMAGE GALLERY
+   CENTER IMAGE GRID
 ========================================= */
 
 .home-gallery-images {
   min-width: 0;
+
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
+  gap: 11px;
 }
+
+/* Animation wrapper */
+
+.home-gallery-image-reveal {
+  height: 100%;
+}
+
+/* =========================================
+   GALLERY IMAGE CARD
+========================================= */
 
 .home-gallery-image {
   position: relative;
+  isolation: isolate;
+
   display: block;
 
   width: 100%;
-  height: 190px;
+  height: 200px;
+
   overflow: hidden;
 
+  border: 1px solid rgba(183, 127, 41, 0.4);
   border-radius: 12px;
+
   background: #d9c39f;
+
+  box-shadow:
+    0 8px 22px rgba(95, 57, 18, 0.12);
+
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.4s ease,
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.home-gallery-image img {
+.home-gallery-image:hover {
+  border-color: #c28b36;
+
+  box-shadow:
+    0 13px 28px rgba(95, 57, 18, 0.17);
+
+  transform: translateY(-4px);
+}
+
+.home-gallery-photo {
   object-fit: cover;
-  transition: transform 0.4s ease;
+  transition:
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.home-gallery-image:hover img {
-  transform: scale(1.06);
+.home-gallery-image:hover .home-gallery-photo {
+  transform: scale(1.09);
+}
+
+/* =========================================
+   IMAGE HOVER OVERLAY
+========================================= */
+
+.home-gallery-image-overlay {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+
+  background: linear-gradient(
+    to top,
+    rgba(9, 39, 24, 0.4),
+    transparent 60%
+  );
+
+  opacity: 0.2;
+  transition: opacity 0.4s ease;
+}
+
+.home-gallery-image:hover .home-gallery-image-overlay {
+  opacity: 0.65;
+}
+
+/* =========================================
+   IMAGE CORNER ICON
+========================================= */
+
+.home-gallery-image-arrow {
+  position: absolute;
+  z-index: 2;
+
+  right: 10px;
+  bottom: 10px;
+
+  width: 29px;
+  height: 29px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(243, 206, 132, 0.65);
+  border-radius: 50%;
+
+  color: #f6d996;
+  background: rgba(10, 39, 24, 0.7);
+
+  opacity: 0;
+  transform: translateY(7px);
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+.home-gallery-image:hover .home-gallery-image-arrow,
+.home-gallery-image:focus-visible .home-gallery-image-arrow {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.home-gallery-image:focus-visible {
+  outline: 2px solid #ad781d;
+  outline-offset: 4px;
 }
 
 /* =========================================
@@ -149,7 +369,7 @@
 .home-gallery-contact {
   position: relative;
 
-  padding-left: 26px;
+  padding-left: 27px;
   border-left: 1px solid rgba(168, 109, 35, 0.35);
 }
 
@@ -158,19 +378,33 @@
   top: -4px;
   left: -13px;
 
+  padding: 2px;
+
   color: #b9781c;
   background: #faead6;
+
+  border-radius: 50%;
 }
+
+/* =========================================
+   LOCATION
+========================================= */
 
 .home-gallery-location {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 8px;
 
-  margin-top: 16px;
+  margin-top: 18px;
+
   color: #8f5b22;
-
+  font-family: var(--font-anek), sans-serif;
   font-size: 12px;
+  font-weight: 500;
+}
+
+.home-gallery-location svg {
+  flex-shrink: 0;
 }
 
 /* =========================================
@@ -178,22 +412,32 @@
 ========================================= */
 
 @media (max-width: 1050px) {
+  .home-gallery {
+    padding: 60px 5% 65px;
+  }
+
   .home-gallery-container {
-    grid-template-columns: 1fr 1.3fr;
-    gap: 25px;
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 1.3fr);
+
+    gap: 26px;
+  }
+
+  .home-gallery-contact-reveal {
+    grid-column: 1 / -1;
   }
 
   .home-gallery-contact {
-    grid-column: 1 / -1;
     padding-left: 0;
-    padding-top: 22px;
+    padding-top: 25px;
 
     border-left: 0;
     border-top: 1px solid rgba(168, 109, 35, 0.35);
   }
 
   .home-gallery-bell {
-    top: 9px;
+    top: 13px;
     left: auto;
     right: 0;
   }
@@ -205,12 +449,16 @@
 
 @media (max-width: 650px) {
   .home-gallery {
-    padding: 45px 20px 55px;
+    padding: 50px 20px 60px;
   }
 
   .home-gallery-container {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 30px;
+  }
+
+  .home-gallery-contact-reveal {
+    grid-column: auto;
   }
 
   .home-gallery-images {
@@ -218,29 +466,53 @@
   }
 
   .home-gallery-image {
-    height: 140px;
-    border-radius: 9px;
-  }
-
-  .home-gallery-contact {
-    grid-column: auto;
+    height: 155px;
+    border-radius: 10px;
   }
 
   .home-gallery-intro h2,
   .home-gallery-contact h2 {
     font-size: 27px;
   }
-}
 
-@media (max-width: 380px) {
-  .home-gallery-image {
-    height: 115px;
+  .home-gallery-contact {
+    padding-top: 27px;
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .home-gallery-image img,
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+  .home-gallery-image {
+    height: 125px;
+  }
+
   .home-gallery-button {
-    transition: none;
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .home-gallery-image,
+  .home-gallery-photo,
+  .home-gallery-image-overlay,
+  .home-gallery-image-arrow,
+  .home-gallery-button,
+  .home-gallery-button svg {
+    transition: none !important;
+  }
+
+  .home-gallery-image:hover,
+  .home-gallery-image:hover .home-gallery-photo,
+  .home-gallery-button:hover,
+  .home-gallery-button:hover svg {
+    transform: none !important;
   }
 }

@@ -1,27 +1,29 @@
 
 /* =========================================
    KIZHUR THERU TEMPLE
-   FOOTER
+   PREMIUM HERITAGE FOOTER
 ========================================= */
 
 .temple-footer {
   position: relative;
+  isolation: isolate;
+
   width: 100%;
   overflow: hidden;
 
-  padding: 38px 4.5% 24px;
+  padding: 48px 4.5% 25px;
 
   background:
     radial-gradient(
-      circle at 70% 15%,
-      rgba(34, 75, 43, 0.32),
-      transparent 45%
+      ellipse at 75% 5%,
+      rgba(46, 98, 61, 0.24),
+      transparent 55%
     ),
     linear-gradient(
-      135deg,
-      #031d13 0%,
-      #08291a 55%,
-      #041b12 100%
+      130deg,
+      #031c12 0%,
+      #092d1d 52%,
+      #041d13 100%
     );
 
   color: #fff4df;
@@ -29,44 +31,163 @@
 }
 
 /* =========================================
+   SUBTLE HERITAGE BACKGROUND
+========================================= */
+
+.temple-footer::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+
+  width: 430px;
+  height: 430px;
+
+  right: -160px;
+  top: -300px;
+
+  border: 1px solid rgba(230, 189, 103, 0.1);
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+.temple-footer::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+
+  width: 280px;
+  height: 280px;
+
+  left: -170px;
+  bottom: -180px;
+
+  border: 1px solid rgba(230, 189, 103, 0.08);
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+/* =========================================
+   TOP GOLD ACCENT
+========================================= */
+
+.footer-top-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(235, 192, 101, 0.65),
+    transparent
+  );
+}
+
+/* =========================================
    MAIN FOOTER GRID
 ========================================= */
 
 .temple-footer-main {
+  position: relative;
+  z-index: 1;
+
   width: 100%;
   max-width: 1320px;
   margin: 0 auto;
 
   display: grid;
+
   grid-template-columns:
-    minmax(0, 1.3fr)
-    minmax(0, 1.3fr)
-    minmax(0, 0.7fr)
-    minmax(0, 1fr);
+    minmax(0, 1.45fr)
+    minmax(0, 1.35fr)
+    minmax(0, 0.75fr)
+    minmax(0, 1.15fr);
 
   align-items: center;
-  gap: 22px;
+  gap: clamp(20px, 2.3vw, 35px);
 }
 
 /* =========================================
-   TEMPLE BRAND
+   TEMPLE IDENTITY
 ========================================= */
 
 .footer-brand {
   display: flex;
   align-items: center;
-  gap: 13px;
+  gap: 16px;
+
   min-width: 0;
 }
 
+/* =========================================
+   REFINED LOGO FRAME
+========================================= */
+
 .footer-logo {
+  position: relative;
+
   flex-shrink: 0;
+
+  width: 70px;
+  height: 70px;
+
   display: flex;
   align-items: center;
   justify-content: center;
 
+  border: 1px solid rgba(229, 183, 82, 0.45);
+  border-radius: 15px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(240, 197, 98, 0.09),
+    rgba(240, 197, 98, 0.015)
+  );
+
   color: #eabd56;
+  text-decoration: none;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 233, 167, 0.08);
+
+  transition:
+    color 0.35s ease,
+    border-color 0.35s ease,
+    background 0.35s ease,
+    transform 0.45s cubic-bezier(
+      0.22, 1, 0.36, 1
+    );
 }
+
+.footer-logo::after {
+  content: "";
+
+  position: absolute;
+  inset: 5px;
+
+  border: 1px solid rgba(233, 188, 90, 0.12);
+  border-radius: 10px;
+
+  pointer-events: none;
+}
+
+.footer-logo:hover {
+  color: #ffdc8b;
+  border-color: rgba(244, 207, 120, 0.8);
+
+  background: rgba(235, 192, 96, 0.12);
+
+  transform: translateY(-3px);
+}
+
+/* =========================================
+   TEMPLE NAME
+========================================= */
 
 .footer-temple-name {
   min-width: 0;
@@ -75,10 +196,32 @@
   flex-direction: column;
   gap: 3px;
 
-  color: #fff7e8;
+  color: #fff6e6;
+
   font-size: 14px;
   font-weight: 600;
-  line-height: 1.5;
+  line-height: 1.6;
+}
+
+.footer-temple-name > span:nth-child(2) {
+  color: #f9e8ca;
+}
+
+/* Fine gold underline */
+
+.footer-brand-underline {
+  display: block;
+
+  width: 58px;
+  height: 1px;
+
+  margin-top: 8px;
+
+  background: linear-gradient(
+    90deg,
+    #edc36c,
+    rgba(237, 195, 108, 0.08)
+  );
 }
 
 /* =========================================
@@ -90,25 +233,51 @@
 
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 13px;
 
-  padding-left: 22px;
-  border-left: 1px solid rgba(225, 182, 84, 0.5);
+  padding-left: 23px;
+
+  border-left: 1px solid
+    rgba(225, 182, 84, 0.34);
 }
 
 .footer-contact-item {
+  min-width: 0;
+
   display: flex;
   align-items: flex-start;
-  gap: 10px;
+  gap: 11px;
 
-  color: #f4ead7;
+  color: #f0e6d3;
+
   font-size: 12px;
-  line-height: 1.5;
+  font-weight: 400;
+  line-height: 1.6;
+  text-decoration: none;
+
+  overflow-wrap: anywhere;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .footer-contact-item svg {
   flex-shrink: 0;
+  margin-top: 1px;
+
   color: #e8b951;
+
+  transition: color 0.3s ease;
+}
+
+.footer-contact-item:hover {
+  color: #ffda91;
+  transform: translateX(3px);
+}
+
+.footer-contact-item:hover svg {
+  color: #ffda91;
 }
 
 /* =========================================
@@ -118,108 +287,179 @@
 .footer-social {
   min-width: 0;
 
-  padding-left: 20px;
-  border-left: 1px solid rgba(225, 182, 84, 0.5);
+  padding-left: 22px;
+
+  border-left: 1px solid
+    rgba(225, 182, 84, 0.34);
 }
 
 .footer-social p {
-  margin: 0 0 11px;
+  margin: 0 0 13px;
 
-  color: #fff3da;
+  color: #fff3d8;
+
   font-size: 13px;
   font-weight: 600;
+  line-height: 1.5;
 }
+
+/* =========================================
+   SOCIAL ICON ROW
+========================================= */
 
 .footer-social-icons {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
 .footer-social-placeholder {
-  width: 31px;
-  height: 31px;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
+  width: 34px;
+  height: 34px;
+
+  border: 1px solid rgba(235, 192, 94, 0.35);
   border-radius: 50%;
-  background: #f0c974;
-  color: #07301d;
+
+  background: #eec772;
+  color: #082b1b;
+
+  cursor: default;
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.07);
+
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.4s cubic-bezier(
+      0.22, 1, 0.36, 1
+    );
+}
+
+.footer-social-placeholder:hover {
+  background: #ffdf97;
+  border-color: #ffdf97;
+
+  box-shadow:
+    0 6px 15px rgba(0, 0, 0, 0.12);
+
+  transform: translateY(-3px);
 }
 
 .footer-facebook-icon {
   font-family: Arial, sans-serif;
-  font-size: 21px;
+  font-size: 22px;
   font-weight: 700;
   line-height: 1;
 }
 
 /* =========================================
-   CONTACT BUTTON
+   CONTACT ACTION
 ========================================= */
 
 .footer-action {
-  min-width: 0;
   display: flex;
   justify-content: flex-end;
+
+  min-width: 0;
 }
 
 .footer-contact-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 9px;
 
   max-width: 100%;
-  padding: 10px 14px;
 
-  border: 1.5px solid #e6b94c;
+  padding: 12px 15px;
+
+  border: 1px solid #e5b957;
   border-radius: 40px;
 
+  background: rgba(240, 191, 85, 0.035);
   color: #f4cb69;
-  background: transparent;
 
   font-size: 12px;
   font-weight: 600;
   line-height: 1.5;
+
   text-align: center;
   text-decoration: none;
 
-  transition: background 0.25s ease;
+  transition:
+    background 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s cubic-bezier(
+      0.22, 1, 0.36, 1
+    );
 }
 
-.footer-contact-button:hover {
-  background: rgba(230, 185, 76, 0.12);
-}
-
-.footer-contact-button:focus-visible {
-  outline: 2px solid #e6b94c;
-  outline-offset: 3px;
-}
-
-.footer-contact-button svg {
+.footer-contact-button > svg {
   flex-shrink: 0;
 }
 
+.footer-contact-button:hover {
+  background: rgba(230, 185, 76, 0.13);
+
+  color: #ffe4a0;
+  border-color: #f5d587;
+
+  box-shadow:
+    0 7px 19px rgba(0, 0, 0, 0.13);
+
+  transform: translateY(-3px);
+}
+
+.footer-action-arrow {
+  opacity: 0.7;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.footer-contact-button:hover
+.footer-action-arrow {
+  opacity: 1;
+  transform: translate(2px, -2px);
+}
+
+.footer-contact-button:focus-visible,
+.footer-logo:focus-visible,
+.footer-contact-item:focus-visible {
+  outline: 2px solid #e6b94c;
+  outline-offset: 4px;
+}
+
 /* =========================================
-   GOLD DIVIDER — NO LOTUS
+   SIMPLE GOLD DIVIDER
+   NO LOTUS OR CENTER SYMBOL
 ========================================= */
 
 .footer-gold-divider {
+  position: relative;
+
   width: 100%;
   max-width: 1320px;
-  height: 2px;
+  height: 1px;
 
-  margin: 32px auto 20px;
+  margin: 36px auto 22px;
 
   background: linear-gradient(
     90deg,
     transparent 0%,
-    #b88629 8%,
-    #edc66b 50%,
-    #b88629 92%,
+    rgba(184, 134, 41, 0.65) 8%,
+    #e1b861 50%,
+    rgba(184, 134, 41, 0.65) 92%,
     transparent 100%
   );
 }
@@ -229,6 +469,9 @@
 ========================================= */
 
 .temple-footer-bottom {
+  position: relative;
+  z-index: 1;
+
   width: 100%;
   max-width: 1320px;
   margin: 0 auto;
@@ -242,31 +485,43 @@
 .temple-footer-bottom p {
   margin: 0;
 
-  color: #ebdfca;
-  font-size: 12px;
-  line-height: 1.6;
+  color: #d9cfbc;
+
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.7;
 }
 
 .footer-bottom-links {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 13px;
+
   flex-shrink: 0;
 }
 
 .footer-bottom-links a {
-  color: #f0dfbe;
-  font-size: 12px;
+  color: #e7d7b8;
+
+  font-size: 11px;
+  font-weight: 400;
   text-decoration: none;
   white-space: nowrap;
+
+  transition: color 0.3s ease;
 }
 
 .footer-bottom-links a:hover {
-  color: #e8b951;
+  color: #f2c971;
 }
 
-.footer-bottom-links span {
-  color: #c29a48;
+.footer-bottom-links a:focus-visible {
+  outline: 2px solid #e6b94c;
+  outline-offset: 3px;
+}
+
+.footer-bottom-links > span {
+  color: rgba(194, 154, 72, 0.65);
 }
 
 /* =========================================
@@ -276,16 +531,16 @@
 @media (max-width: 1200px) {
   .temple-footer-main {
     grid-template-columns:
-      minmax(0, 1.1fr)
+      minmax(0, 1.15fr)
       minmax(0, 1.2fr)
       minmax(0, 0.7fr);
 
-    gap: 24px;
+    gap: 25px;
   }
 
   .footer-action {
     grid-column: 1 / -1;
-    justify-content: flex-end;
+    justify-content: flex-start;
   }
 }
 
@@ -294,9 +549,15 @@
 ========================================= */
 
 @media (max-width: 900px) {
+  .temple-footer {
+    padding: 45px 5% 25px;
+  }
+
   .temple-footer-main {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 28px;
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 30px;
   }
 
   .footer-social {
@@ -320,21 +581,27 @@
 
 @media (max-width: 600px) {
   .temple-footer {
-    padding: 36px 20px 24px;
+    padding: 42px 20px 25px;
   }
 
   .temple-footer-main {
     grid-template-columns: 1fr;
-    gap: 25px;
+    gap: 27px;
   }
 
   .footer-brand {
-    gap: 12px;
+    gap: 13px;
+  }
+
+  .footer-logo {
+    width: 59px;
+    height: 59px;
+    border-radius: 13px;
   }
 
   .footer-logo svg {
-    width: 43px;
-    height: 43px;
+    width: 37px;
+    height: 37px;
   }
 
   .footer-temple-name {
@@ -351,13 +618,21 @@
     font-size: 12px;
   }
 
+  .footer-social-icons {
+    gap: 11px;
+  }
+
   .footer-action {
     grid-column: auto;
     justify-content: flex-start;
   }
 
+  .footer-contact-button {
+    padding: 11px 17px;
+  }
+
   .footer-gold-divider {
-    margin: 28px auto 19px;
+    margin: 32px auto 22px;
   }
 
   .temple-footer-bottom {
@@ -376,11 +651,44 @@
 }
 
 /* =========================================
-   REDUCED MOTION
+   VERY SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+  .footer-temple-name {
+    font-size: 12px;
+  }
+
+  .footer-contact-button {
+    font-size: 11px;
+    padding: 11px 13px;
+  }
+
+  .footer-bottom-links {
+    gap: 9px;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
 ========================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  .footer-contact-button {
-    transition: none;
+  .footer-logo,
+  .footer-contact-item,
+  .footer-social-placeholder,
+  .footer-contact-button,
+  .footer-action-arrow,
+  .footer-bottom-links a {
+    transition: none !important;
+  }
+
+  .footer-logo:hover,
+  .footer-contact-item:hover,
+  .footer-social-placeholder:hover,
+  .footer-contact-button:hover,
+  .footer-contact-button:hover
+  .footer-action-arrow {
+    transform: none !important;
   }
 }

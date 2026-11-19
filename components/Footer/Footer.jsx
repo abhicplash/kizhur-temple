@@ -7,54 +7,121 @@ import {
   Phone,
   Mail,
   Heart,
+  ArrowUpRight,
 } from "lucide-react";
 
 import "./Footer.css";
 
+const templeMapUrl =
+  "https://maps.app.goo.gl/j5E6nTA4kmctau7MA";
+
 export default function Footer() {
   return (
     <footer className="temple-footer">
+      {/* SUBTLE TOP GOLD LINE */}
+      <div
+        className="footer-top-accent"
+        aria-hidden="true"
+      />
+
       <div className="temple-footer-main">
 
-        {/* TEMPLE IDENTITY */}
+        {/* =====================================
+            TEMPLE IDENTITY
+        ===================================== */}
+
         <div className="footer-brand">
-          <div className="footer-logo" aria-hidden="true">
-            <Landmark size={52} strokeWidth={1.4} />
-          </div>
+          <Link
+            href="/"
+            className="footer-logo"
+            aria-label="ഹോം പേജിലേക്ക്"
+          >
+            <Landmark
+              size={43}
+              strokeWidth={1.3}
+              aria-hidden="true"
+            />
+          </Link>
 
           <div className="footer-temple-name">
             <span>കിഴുർ തെരു ശ്രീ</span>
-            <span>മഹാഗണപതി-ഭഗവതി ക്ഷേത്രം</span>
+            <span>
+              മഹാഗണപതി-ഭഗവതി ക്ഷേത്രം
+            </span>
+
+            <span
+              className="footer-brand-underline"
+              aria-hidden="true"
+            />
           </div>
         </div>
 
-        {/* CONTACT INFORMATION */}
+        {/* =====================================
+            CONTACT INFORMATION
+        ===================================== */}
+
         <div className="footer-contact">
-          <div className="footer-contact-item">
-            <MapPin size={18} aria-hidden="true" />
-            <span>കിഴുർ, പയ്യോളി, കോഴിക്കോട്</span>
-          </div>
 
-          <div className="footer-contact-item">
-            <Phone size={18} aria-hidden="true" />
-            <span>+91-9562465095 </span>
-          </div>
+          <a
+            href={templeMapUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="footer-contact-item"
+          >
+            <MapPin
+              size={18}
+              strokeWidth={1.6}
+              aria-hidden="true"
+            />
 
-          <div className="footer-contact-item">
-            <Mail size={18} aria-hidden="true" />
+            <span>
+              കിഴുർ, പയ്യോളി, കോഴിക്കോട്
+            </span>
+          </a>
+
+          <a
+            href="tel:+919562465095"
+            className="footer-contact-item"
+          >
+            <Phone
+              size={17}
+              strokeWidth={1.6}
+              aria-hidden="true"
+            />
+
+            <span>+91 95624 65095</span>
+          </a>
+
+          <a
+            href="mailto:abhicplash@gmail.com"
+            className="footer-contact-item"
+          >
+            <Mail
+              size={17}
+              strokeWidth={1.6}
+              aria-hidden="true"
+            />
+
             <span>abhicplash@gmail.com</span>
-          </div>
+          </a>
+
         </div>
 
-        {/* SOCIAL MEDIA */}
+        {/* =====================================
+            SOCIAL MEDIA
+        ===================================== */}
+
         <div className="footer-social">
           <p>ഞങ്ങളെ പിന്തുടരുക</p>
 
           <div className="footer-social-icons">
+
+            {/* YouTube - placeholder */}
             <span
               className="footer-social-placeholder"
-              aria-label="YouTube"
               title="YouTube - coming soon"
+              role="img"
+              aria-label="YouTube"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -67,18 +134,24 @@ export default function Footer() {
               </svg>
             </span>
 
+            {/* Facebook - placeholder */}
             <span
               className="footer-social-placeholder"
-              aria-label="Facebook"
               title="Facebook - coming soon"
+              role="img"
+              aria-label="Facebook"
             >
-              <strong className="footer-facebook-icon">f</strong>
+              <strong className="footer-facebook-icon">
+                f
+              </strong>
             </span>
 
+            {/* Instagram - placeholder */}
             <span
               className="footer-social-placeholder"
-              aria-label="Instagram"
               title="Instagram - coming soon"
+              role="img"
+              aria-label="Instagram"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -91,32 +164,79 @@ export default function Footer() {
                 strokeLinejoin="round"
                 aria-hidden="true"
               >
-                <rect x="2" y="2" width="20" height="20" rx="5" />
-                <circle cx="12" cy="12" r="4" />
-                <circle cx="18" cy="6" r="1" fill="currentColor" stroke="none" />
+                <rect
+                  x="2"
+                  y="2"
+                  width="20"
+                  height="20"
+                  rx="5"
+                />
+
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="4"
+                />
+
+                <circle
+                  cx="18"
+                  cy="6"
+                  r="1"
+                  fill="currentColor"
+                  stroke="none"
+                />
               </svg>
             </span>
+
           </div>
         </div>
 
-        {/* CONTACT BUTTON */}
+        {/* =====================================
+            CONTACT BUTTON
+        ===================================== */}
+
         <div className="footer-action">
           <Link
             href="/contact"
             className="footer-contact-button"
           >
-            <Heart size={17} aria-hidden="true" />
-            <span>ക്ഷേത്രവുമായി ബന്ധപ്പെടുക</span>
+            <Heart
+              size={17}
+              strokeWidth={1.6}
+              aria-hidden="true"
+            />
+
+            <span>
+              ക്ഷേത്രവുമായി ബന്ധപ്പെടുക
+            </span>
+
+            <ArrowUpRight
+              className="footer-action-arrow"
+              size={15}
+              strokeWidth={1.6}
+              aria-hidden="true"
+            />
           </Link>
         </div>
 
       </div>
 
-      {/* SIMPLE GOLD DIVIDER — NO LOTUS */}
-      <div className="footer-gold-divider" />
+      {/* =====================================
+          SIMPLE GOLD DIVIDER
+          NO LOTUS
+      ===================================== */}
 
-      {/* COPYRIGHT */}
+      <div
+        className="footer-gold-divider"
+        aria-hidden="true"
+      />
+
+      {/* =====================================
+          FOOTER BOTTOM
+      ===================================== */}
+
       <div className="temple-footer-bottom">
+
         <p>
           © {new Date().getFullYear()} കിഴുർ തെരു ശ്രീ
           മഹാഗണപതി-ഭഗവതി ക്ഷേത്രം.
@@ -128,12 +248,13 @@ export default function Footer() {
             Privacy Policy
           </Link>
 
-          <span>|</span>
+          <span aria-hidden="true">|</span>
 
           <Link href="/terms">
             Terms of Service
           </Link>
         </div>
+
       </div>
     </footer>
   );

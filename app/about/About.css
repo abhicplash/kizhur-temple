@@ -1,11 +1,20 @@
+
 /* =========================================
-   ABOUT PAGE
    KIZHUR THERU TEMPLE
+   ABOUT PAGE — HERITAGE EDITION
 ========================================= */
 
 .about-page {
+  --about-green: #103b29;
+  --about-deep: #052719;
+  --about-gold: #c59645;
+  --about-gold-light: #edc979;
+  --about-cream: #fff8ed;
+  --about-text: #403123;
+  --about-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
   width: 100%;
-  overflow: hidden;
+  overflow: clip;
   font-family: var(--font-anek), sans-serif;
 }
 
@@ -16,70 +25,145 @@
 }
 
 /* =========================================
-   1. ABOUT HERO
+   01 — CINEMATIC HERO
 ========================================= */
 
 .about-page-hero {
   position: relative;
   isolation: isolate;
-  min-height: 420px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  padding: 130px 5% 75px;
+  min-height: 465px;
+  padding: 145px 5% 90px;
+
+  overflow: hidden;
+  background: #092619;
+  color: #fff7e8;
+}
+
+.about-hero-background {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
 
   background:
-    linear-gradient(90deg, rgba(0, 27, 15, 0.88), rgba(0, 28, 16, 0.48)),
-    url("/images/temple-hero.webp");
+    linear-gradient(
+      90deg,
+      rgba(0, 24, 14, 0.82),
+      rgba(0, 28, 16, 0.44),
+      rgba(0, 24, 14, 0.68)
+    ),
+    url("/images/temple-hero.webp")
+      center 48% / cover no-repeat;
 
-  background-position: center 48%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  color: #fff7e8;
+  animation: aboutHeroZoom 4.5s
+    var(--about-ease) both;
+}
+
+@keyframes aboutHeroZoom {
+  from {
+    transform: scale(1.065);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Delicate gold framing lines */
+
+.about-page-hero::before,
+.about-page-hero::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+
+  width: 1px;
+  height: 34%;
+
+  top: 38%;
+
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(240, 198, 113, 0.33),
+    transparent
+  );
+
+  pointer-events: none;
+}
+
+.about-page-hero::before {
+  left: 4%;
+}
+
+.about-page-hero::after {
+  right: 4%;
 }
 
 .about-page-hero-inner {
   position: relative;
   z-index: 1;
-  max-width: 900px;
+
   width: 100%;
+  max-width: 970px;
+
   text-align: center;
 }
 
 .about-hero-eyebrow {
-  margin: 0 0 10px;
-  color: #f3dcaa;
+  margin: 0 0 19px;
 
-  font-size: clamp(15px, 1.7vw, 19px);
+  color: #efcf8a;
+
+  font-size: 14px;
   font-weight: 500;
   line-height: 1.6;
+  letter-spacing: 0.3px;
 }
 
 .about-page-hero h1 {
   margin: 0;
-  color: #f8d994;
 
-  font-size: clamp(38px, 5vw, 64px);
+  color: #fff1d0;
+
+  font-size: clamp(34px, 4.2vw, 57px);
   font-weight: 600;
-  line-height: 1.35;
+  line-height: 1.5;
+  text-wrap: balance;
+
+  text-shadow: 0 4px 26px rgba(0, 0, 0, 0.18);
+}
+
+.about-page-hero h1 span {
+  display: block;
+  color: #f4d48f;
 }
 
 .about-hero-ornament {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 13px;
+  gap: 15px;
 
-  margin: 14px auto 18px;
-  color: #e8bc5d;
+  margin: 22px auto 20px;
+
+  color: #e8bf68;
 }
 
 .about-hero-ornament span {
-  width: 75px;
+  width: 78px;
   height: 1px;
-  background: #d5ad52;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #e5b962,
+    transparent
+  );
 }
 
 .about-breadcrumb {
@@ -89,59 +173,131 @@
   flex-wrap: wrap;
   gap: 12px;
 
-  color: #f8e9cf;
-  font-size: 14px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #f2e4c9;
 }
 
 .about-breadcrumb a {
-  color: #f8e9cf;
+  color: inherit;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .about-breadcrumb a:hover {
-  color: #f4ca69;
+  color: #f6ce7d;
 }
 
 .about-breadcrumb > span:nth-child(2) {
-  color: #d7aa4a;
+  color: #d4a54c;
+}
+
+.about-hero-bottom-line {
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(230, 182, 91, 0.6),
+    transparent
+  );
 }
 
 /* =========================================
-   SHARED SECTION ELEMENTS
+   SHARED TYPOGRAPHY / DETAILS
 ========================================= */
 
 .about-section-eyebrow {
-  margin: 0 0 12px;
-  color: #9e5915;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 
+  margin: 0 0 16px;
+
+  color: #955a19;
   font-size: 14px;
   font-weight: 600;
   line-height: 1.5;
 }
 
-.about-heading-rule {
-  width: 90px;
-  height: 2px;
-  margin: 18px 0 25px;
+.about-eyebrow-line {
+  width: 34px;
+  height: 1px;
+  flex-shrink: 0;
 
-  background: linear-gradient(90deg, #bc7c27, #efd39b, transparent);
+  background: linear-gradient(
+    90deg,
+    #b68038,
+    rgba(182, 128, 56, 0.2)
+  );
+}
+
+.about-heading-rule {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  width: 140px;
+  margin: 22px 0 28px;
+
+  color: #b98335;
+}
+
+.about-heading-rule span {
+  flex: 1;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    #b98335,
+    rgba(185, 131, 53, 0.12)
+  );
 }
 
 /* =========================================
-   2. TEMPLE INTRODUCTION
+   02 — INTRODUCTION
 ========================================= */
 
 .about-introduction {
   position: relative;
-  padding: 90px 5%;
+  isolation: isolate;
+
+  padding: 105px 5% 110px;
 
   background:
     radial-gradient(
-      ellipse at 94% 80%,
-      rgba(207, 155, 72, 0.17),
-      transparent 45%
+      ellipse at 95% 85%,
+      rgba(208, 163, 90, 0.17),
+      transparent 48%
     ),
-    linear-gradient(125deg, #fff8ed, #f7e6cc);
+    linear-gradient(
+      125deg,
+      #fffaf0,
+      #f7e7cd
+    );
+}
+
+.about-introduction::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+
+  right: -160px;
+  top: -200px;
+
+  width: 480px;
+  height: 480px;
+
+  border: 1px solid rgba(188, 135, 62, 0.09);
+  border-radius: 50%;
+
+  pointer-events: none;
 }
 
 .about-introduction-container {
@@ -150,79 +306,142 @@
   margin: 0 auto;
 
   display: grid;
-  grid-template-columns: minmax(0, 43%) minmax(0, 1fr);
+  grid-template-columns:
+    minmax(0, 43%)
+    minmax(0, 1fr);
+
   align-items: center;
-  gap: clamp(35px, 6vw, 85px);
+  gap: clamp(45px, 6vw, 90px);
 }
+
+.about-intro-reveal {
+  min-width: 0;
+  width: 100%;
+}
+
+/* Image composition */
 
 .about-introduction-image {
   position: relative;
   width: 100%;
-  padding: 16px;
+  padding: 17px;
+}
+
+.about-image-outer-border {
+  padding: 8px;
+
+  border: 1px solid rgba(184, 130, 56, 0.47);
+  border-radius:
+    46% 12% 42% 10% /
+    15% 43% 13% 38%;
+
+  background: rgba(255, 249, 235, 0.6);
+
+  box-shadow:
+    0 20px 48px rgba(88, 49, 12, 0.13);
 }
 
 .about-image-border {
   position: relative;
   width: 100%;
   aspect-ratio: 0.97;
+
   overflow: hidden;
 
-  border: 7px solid rgba(255, 245, 224, 0.9);
-  border-radius: 46% 12% 42% 10% / 15% 43% 13% 38%;
+  border-radius:
+    46% 12% 42% 10% /
+    15% 43% 13% 38%;
 
-  box-shadow: 0 15px 40px rgba(100, 59, 18, 0.18);
+  background: #e5d2b3;
 }
 
 .about-introduction-photo {
   object-fit: cover;
   object-position: center;
-  transition: transform 0.5s ease;
+
+  transition: transform 1.2s var(--about-ease);
 }
 
-.about-image-border:hover .about-introduction-photo {
-  transform: scale(1.04);
+.about-introduction-image:hover
+.about-introduction-photo {
+  transform: scale(1.055);
+}
+
+.about-image-corner {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  pointer-events: none;
+}
+
+.about-image-corner-top {
+  left: 0;
+  top: 0;
+
+  border-left: 1px solid #c39a56;
+  border-top: 1px solid #c39a56;
+}
+
+.about-image-corner-bottom {
+  right: 0;
+  bottom: 0;
+
+  border-right: 1px solid #c39a56;
+  border-bottom: 1px solid #c39a56;
 }
 
 .about-image-decoration {
   position: absolute;
   right: -8px;
-  bottom: 14px;
+  bottom: 22px;
 
   display: grid;
   place-items: center;
 
-  width: 64px;
-  height: 64px;
+  width: 66px;
+  height: 66px;
 
-  border: 1px solid #c79238;
+  border: 1px solid rgba(183, 123, 35, 0.65);
   border-radius: 50%;
 
   background: #fff1d7;
-  color: #b4771f;
-  font-size: 29px;
+  color: #ad7626;
+  font-size: 27px;
 
-  box-shadow: 0 8px 20px rgba(90, 58, 22, 0.12);
+  box-shadow: 0 10px 25px rgba(87, 50, 15, 0.13);
+
+  transition: transform 0.65s var(--about-ease);
 }
 
+.about-introduction-image:hover
+.about-image-decoration {
+  transform: rotate(45deg);
+}
+
+/* Content */
+
 .about-introduction-content {
+  position: relative;
   min-width: 0;
 }
 
 .about-introduction-content h2 {
   margin: 0;
-  color: #113b28;
 
-  font-size: clamp(27px, 2.9vw, 40px);
+  color: #113b28;
+  font-size: clamp(28px, 2.9vw, 40px);
   font-weight: 600;
-  line-height: 1.5;
+  line-height: 1.55;
+  overflow-wrap: break-word;
 }
 
 .about-introduction-content h2 span {
   display: block;
 }
 
-.about-introduction-content > p:not(.about-section-eyebrow) {
-  margin: 0 0 17px;
+.about-intro-paragraph {
+  max-width: 630px;
+  margin: 0 0 19px;
 
   color: #403123;
   font-size: 16px;
@@ -233,38 +452,82 @@
 .about-location-chip {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
+  gap: 10px;
 
-  margin-top: 12px;
-  padding: 10px 17px;
+  max-width: 100%;
+  margin-top: 13px;
+  padding: 11px 18px;
 
-  border: 1px solid rgba(184, 119, 31, 0.32);
-  border-radius: 50px;
+  border: 1px solid rgba(184, 119, 31, 0.35);
+  border-radius: 40px;
 
-  background: rgba(255, 249, 237, 0.75);
+  background: rgba(255, 249, 237, 0.7);
   color: #915617;
 
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-decoration: none;
+
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    transform 0.35s var(--about-ease);
 }
 
 .about-location-chip svg {
   flex-shrink: 0;
 }
 
+.about-location-chip:hover {
+  background: #fff3db;
+  border-color: #b98235;
+  transform: translateY(-3px);
+}
+
 /* =========================================
-   3. WORSHIP & TRADITION
+   03 — WORSHIP & TRADITION
 ========================================= */
 
 .about-tradition {
   position: relative;
-  padding: 78px 5% 90px;
+  isolation: isolate;
+
+  padding: 95px 5% 105px;
+
+  overflow: hidden;
 
   background:
-    radial-gradient(circle at 50% 0%, rgba(47, 91, 60, 0.3), transparent 55%),
-    linear-gradient(135deg, #052719, #103a28 55%, #052416);
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(49, 100, 66, 0.32),
+      transparent 60%
+    ),
+    linear-gradient(
+      135deg,
+      #042416,
+      #103a28 55%,
+      #052416
+    );
 
   color: #fff7e8;
+}
+
+.about-tradition::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+
+  width: 480px;
+  height: 480px;
+
+  top: -250px;
+  right: -180px;
+
+  border: 1px solid rgba(230, 191, 104, 0.09);
+  border-radius: 50%;
+
+  pointer-events: none;
 }
 
 .about-tradition-container {
@@ -273,31 +536,58 @@
 }
 
 .about-tradition-heading {
-  max-width: 700px;
-  margin: 0 auto 38px;
+  max-width: 750px;
+  margin: 0 auto 48px;
   text-align: center;
 }
 
 .about-tradition-heading .about-section-eyebrow {
-  color: #ebc475;
+  justify-content: center;
+  color: #ecc77e;
 }
 
 .about-tradition-heading h2 {
-  margin: 0 0 12px;
+  margin: 0 0 16px;
 
-  color: #fff3db;
-  font-size: clamp(29px, 3.2vw, 43px);
+  color: #fff2d8;
+  font-size: clamp(30px, 3.3vw, 43px);
   font-weight: 600;
-  line-height: 1.4;
+  line-height: 1.45;
+}
+
+.about-tradition-divider,
+.about-visit-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  margin: 0 auto 20px;
+  color: #eac477;
+}
+
+.about-tradition-divider span,
+.about-visit-divider span {
+  width: 56px;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(234, 196, 119, 0.7),
+    transparent
+  );
 }
 
 .about-tradition-heading > p:last-child {
   margin: 0;
 
-  color: #e7e0cf;
+  color: #e7dfcc;
   font-size: 16px;
-  line-height: 1.8;
+  line-height: 1.85;
 }
+
+/* Cards */
 
 .about-tradition-grid {
   display: grid;
@@ -305,87 +595,159 @@
   gap: 22px;
 }
 
+.about-tradition-reveal {
+  min-width: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .about-tradition-card {
   position: relative;
-  min-width: 0;
-  min-height: 280px;
+  isolation: isolate;
 
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  padding: 35px 26px 30px;
+  width: 100%;
+  min-height: 300px;
+  height: 100%;
+
+  padding: 38px 28px 29px;
+
+  overflow: hidden;
 
   border: 1px solid rgba(224, 181, 92, 0.34);
   border-radius: 18px;
 
   background: linear-gradient(
     145deg,
-    rgba(255, 248, 225, 0.08),
+    rgba(255, 248, 225, 0.085),
     rgba(255, 248, 225, 0.025)
   );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 239, 187, 0.05),
+    0 12px 28px rgba(0, 0, 0, 0.06);
 
   text-align: center;
 
   transition:
-    transform 0.25s ease,
-    border-color 0.25s ease;
+    transform 0.45s var(--about-ease),
+    background 0.45s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
 }
 
 .about-tradition-card:hover {
-  transform: translateY(-5px);
-  border-color: #d9ac57;
+  transform: translateY(-7px);
+  border-color: rgba(240, 200, 115, 0.8);
+
+  background: linear-gradient(
+    145deg,
+    rgba(255, 248, 225, 0.12),
+    rgba(255, 248, 225, 0.035)
+  );
+
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.11);
+}
+
+.about-tradition-number {
+  position: absolute;
+  right: 18px;
+  top: 14px;
+
+  color: rgba(236, 194, 110, 0.44);
+  font-size: 12px;
+  letter-spacing: 2px;
 }
 
 .about-tradition-icon {
   display: grid;
   place-items: center;
 
-  width: 66px;
-  height: 66px;
-  margin-bottom: 21px;
+  width: 73px;
+  height: 73px;
+  margin-bottom: 22px;
 
-  border: 1px solid rgba(228, 184, 88, 0.35);
+  border: 1px solid rgba(228, 184, 88, 0.4);
   border-radius: 50%;
 
-  color: #e9bf68;
-  background: rgba(232, 188, 93, 0.09);
+  color: #efcb7d;
+  background: rgba(232, 188, 93, 0.08);
+
+  transition:
+    transform 0.45s var(--about-ease),
+    background 0.4s ease;
+}
+
+.about-tradition-card:hover .about-tradition-icon {
+  transform: translateY(-4px);
+  background: rgba(232, 188, 93, 0.13);
 }
 
 .about-tradition-card h3 {
   margin: 0 0 13px;
-  color: #ffe8ad;
 
-  font-size: 23px;
+  color: #ffe8ad;
+  font-size: 22px;
   font-weight: 600;
   line-height: 1.5;
 }
 
+.about-tradition-small-line {
+  width: 43px;
+  height: 1px;
+  margin: 0 0 18px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #dfb86d,
+    transparent
+  );
+
+  transition: width 0.4s ease;
+}
+
+.about-tradition-card:hover
+.about-tradition-small-line {
+  width: 75px;
+}
+
 .about-tradition-card p {
   margin: 0;
-  color: #f0e7d4;
 
+  color: #eee4d1;
   font-size: 15px;
   line-height: 1.85;
 }
 
 .about-card-ornament {
   margin-top: auto;
-  padding-top: 19px;
+  padding-top: 21px;
 
   color: #d7ac56;
-  font-size: 17px;
+  font-size: 15px;
 }
 
 /* =========================================
-   4. FESTIVALS PREVIEW
+   04 — FESTIVALS PREVIEW
 ========================================= */
 
 .about-celebrations {
   position: relative;
-  padding: 85px 5%;
+  isolation: isolate;
 
-  background: linear-gradient(120deg, #fff8ee, #f7e6cb);
+  padding: 105px 5%;
+
+  background:
+    radial-gradient(
+      circle at 5% 95%,
+      rgba(206, 157, 81, 0.12),
+      transparent 45%
+    ),
+    linear-gradient(120deg, #fff9ef, #f7e6cb);
 }
 
 .about-celebrations-container {
@@ -393,38 +755,45 @@
   margin: 0 auto;
 
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 48%);
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 48%);
+
   align-items: center;
-  gap: clamp(35px, 6vw, 80px);
+  gap: clamp(45px, 6vw, 85px);
+}
+
+.about-celebrations-content {
+  min-width: 0;
 }
 
 .about-celebrations-content h2 {
-  margin: 0 0 17px;
+  margin: 0 0 20px;
 
   color: #123b28;
   font-size: clamp(28px, 3vw, 40px);
   font-weight: 600;
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
-.about-celebrations-content > p:not(.about-section-eyebrow) {
+.about-celebrations-content p:not(.about-section-eyebrow) {
   max-width: 510px;
-  margin: 0 0 26px;
+  margin: 0 0 29px;
 
   color: #433323;
   font-size: 16px;
-  line-height: 1.9;
+  line-height: 1.95;
 }
 
 .about-outline-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 13px;
 
   padding: 12px 24px;
 
-  border: 1.5px solid #b97823;
+  border: 1px solid #b97823;
   border-radius: 40px;
 
   color: #8f4c10;
@@ -432,88 +801,172 @@
 
   font-size: 15px;
   font-weight: 600;
+  line-height: 1.5;
   text-decoration: none;
 
   transition:
-    background 0.25s ease,
-    transform 0.25s ease;
+    background 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s var(--about-ease);
 }
 
 .about-outline-button:hover {
-  background: rgba(186, 123, 36, 0.1);
-  transform: translateY(-2px);
+  background: rgba(186, 123, 36, 0.11);
+  box-shadow: 0 8px 20px rgba(96, 58, 18, 0.08);
+  transform: translateY(-3px);
+}
+
+.about-outline-button svg {
+  transition: transform 0.35s ease;
+}
+
+.about-outline-button:hover svg {
+  transform: translateX(5px);
+}
+
+/* Festival image */
+
+.about-celebrations-reveal {
+  width: 100%;
+  min-width: 0;
+}
+
+.about-celebrations-image-frame {
+  position: relative;
+  width: 100%;
+  padding: 11px;
+
+  border: 1px solid rgba(187, 133, 62, 0.45);
+  border-radius: 23px;
+
+  background: rgba(255, 248, 234, 0.7);
+
+  box-shadow: 0 17px 42px rgba(100, 60, 17, 0.12);
 }
 
 .about-celebrations-image {
   position: relative;
-  min-height: 325px;
+  min-height: 340px;
 
   overflow: hidden;
-  border: 3px solid #fff5df;
-  border-radius: 20px;
-
-  box-shadow: 0 15px 35px rgba(100, 60, 17, 0.16);
+  border-radius: 14px;
+  background: #ddc69e;
 }
 
-.about-celebrations-image img {
+.about-celebrations-photo {
   object-fit: cover;
+
+  transition:
+    transform 1.15s var(--about-ease),
+    filter 0.5s ease;
+}
+
+.about-celebrations-image-frame:hover
+.about-celebrations-photo {
+  transform: scale(1.055);
+  filter: saturate(1.06);
+}
+
+.about-celebrations-corner {
+  position: absolute;
+  right: -7px;
+  bottom: -7px;
+
+  width: 56px;
+  height: 56px;
+
+  border-right: 1px solid #c59645;
+  border-bottom: 1px solid #c59645;
+
+  pointer-events: none;
 }
 
 /* =========================================
-   5. VISIT SECTION
+   05 — VISIT SECTION
 ========================================= */
 
 .about-visit {
   position: relative;
-  padding: 78px 5% 85px;
+  isolation: isolate;
+
+  padding: 95px 5% 100px;
+
+  overflow: hidden;
 
   background:
-    linear-gradient(rgba(2, 31, 18, 0.93), rgba(2, 31, 18, 0.94)),
-    url("/images/temple-hero.webp");
+    linear-gradient(
+      rgba(2, 31, 18, 0.93),
+      rgba(2, 31, 18, 0.94)
+    ),
+    url("/images/temple-hero.webp")
+      center / cover no-repeat;
 
-  background-position: center;
-  background-size: cover;
-
+  color: #fff5df;
   text-align: center;
 }
 
+.about-visit::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+
+  inset: 15px;
+
+  border: 1px solid rgba(229, 185, 89, 0.14);
+
+  pointer-events: none;
+}
+
 .about-visit-container {
+  position: relative;
+  z-index: 1;
+
   max-width: 850px;
   margin: 0 auto;
 }
 
 .about-visit-icon {
-  width: 66px;
-  height: 66px;
-  margin: 0 auto 17px;
-
   display: grid;
   place-items: center;
 
-  border: 1px solid rgba(232, 184, 80, 0.55);
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 23px;
+
+  border: 1px solid rgba(232, 184, 80, 0.6);
   border-radius: 50%;
 
+  background: rgba(236, 193, 108, 0.06);
   color: #efc66a;
+
+  box-shadow:
+    inset 0 0 0 5px rgba(239, 198, 106, 0.035);
 }
 
 .about-visit .about-section-eyebrow {
+  justify-content: center;
   color: #efc66a;
+  margin-bottom: 12px;
 }
 
 .about-visit h2 {
-  margin: 0 0 14px;
+  margin: 0 0 16px;
 
   color: #fff0cf;
-  font-size: clamp(29px, 3.5vw, 46px);
+  font-size: clamp(30px, 3.6vw, 46px);
   font-weight: 600;
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
-.about-visit-container > p:not(.about-section-eyebrow) {
-  margin: 0 0 27px;
+.about-visit-divider {
+  margin-bottom: 21px;
+}
 
-  color: #f5e9d4;
-  font-size: 17px;
+.about-visit-location {
+  margin: 0 0 30px;
+
+  color: #f3e7d2;
+  font-size: 16px;
   line-height: 1.7;
 }
 
@@ -530,21 +983,24 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 11px;
 
-  min-height: 46px;
-  padding: 11px 23px;
+  min-height: 48px;
+  padding: 12px 25px;
 
-  border: 1.5px solid #edc36c;
+  border: 1px solid #edc36c;
   border-radius: 40px;
 
   font-size: 15px;
   font-weight: 600;
+  line-height: 1.5;
   text-decoration: none;
 
   transition:
-    background 0.25s ease,
-    transform 0.25s ease;
+    background 0.35s ease,
+    color 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s var(--about-ease);
 }
 
 .about-visit-primary {
@@ -553,21 +1009,39 @@
 }
 
 .about-visit-secondary {
-  background: transparent;
+  background: rgba(237, 195, 108, 0.025);
   color: #f7d991;
 }
 
 .about-visit-primary:hover,
 .about-visit-secondary:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
 .about-visit-primary:hover {
   background: #ffdc90;
+  box-shadow: 0 9px 22px rgba(0, 0, 0, 0.16);
 }
 
 .about-visit-secondary:hover {
-  background: rgba(237, 195, 108, 0.12);
+  background: rgba(237, 195, 108, 0.13);
+}
+
+.about-visit-actions svg {
+  transition: transform 0.35s ease;
+}
+
+.about-visit-actions a:hover svg {
+  transform: translateX(4px);
+}
+
+/* =========================================
+   KEYBOARD ACCESSIBILITY
+========================================= */
+
+.about-page a:focus-visible {
+  outline: 2px solid #d9a84d;
+  outline-offset: 4px;
 }
 
 /* =========================================
@@ -576,29 +1050,32 @@
 
 @media (max-width: 1000px) {
   .about-page-hero {
-    min-height: 390px;
+    min-height: 405px;
   }
 
   .about-introduction,
   .about-celebrations {
-    padding: 70px 5%;
+    padding: 80px 5%;
   }
 
   .about-introduction-container {
-    grid-template-columns: 42% minmax(0, 1fr);
-    gap: 32px;
+    grid-template-columns:
+      minmax(0, 42%)
+      minmax(0, 1fr);
+
+    gap: 35px;
   }
 
   .about-introduction-content h2 {
     font-size: 28px;
   }
 
-  .about-introduction-content > p:not(.about-section-eyebrow) {
+  .about-intro-paragraph {
     font-size: 15px;
   }
 
   .about-tradition-card {
-    padding: 30px 17px 26px;
+    padding: 32px 18px 27px;
   }
 
   .about-tradition-card h3 {
@@ -610,7 +1087,7 @@
   }
 
   .about-celebrations-container {
-    gap: 35px;
+    gap: 38px;
   }
 }
 
@@ -620,18 +1097,30 @@
 
 @media (max-width: 700px) {
   .about-page-hero {
-    min-height: 340px;
-    padding: 115px 20px 55px;
+    min-height: 380px;
+    padding: 125px 20px 65px;
+  }
 
+  .about-hero-background {
     background-position: 65% center;
   }
 
+  .about-page-hero::before,
+  .about-page-hero::after {
+    display: none;
+  }
+
   .about-page-hero h1 {
-    font-size: clamp(34px, 8vw, 46px);
+    font-size: clamp(28px, 7.5vw, 41px);
+    line-height: 1.55;
   }
 
   .about-hero-eyebrow {
-    font-size: 14px;
+    font-size: 13px;
+  }
+
+  .about-hero-ornament span {
+    width: 53px;
   }
 
   .about-breadcrumb {
@@ -639,60 +1128,66 @@
   }
 
   .about-introduction {
-    padding: 55px 20px 65px;
+    padding: 65px 20px 75px;
   }
 
   .about-introduction-container {
     grid-template-columns: 1fr;
-    gap: 36px;
+    gap: 38px;
   }
 
   .about-introduction-image {
     max-width: 480px;
     margin: 0 auto;
-    padding: 8px;
+    padding: 9px;
   }
 
   .about-image-border {
-    aspect-ratio: 1.15;
+    aspect-ratio: 1.12;
   }
 
   .about-image-decoration {
     right: 0;
     bottom: 0;
-    width: 50px;
-    height: 50px;
+
+    width: 52px;
+    height: 52px;
+    font-size: 22px;
   }
 
   .about-introduction-content h2 {
     font-size: clamp(25px, 6vw, 32px);
   }
 
-  .about-introduction-content > p:not(.about-section-eyebrow) {
+  .about-intro-paragraph {
     font-size: 15px;
-    line-height: 1.85;
+    line-height: 1.9;
   }
 
   .about-tradition {
-    padding: 60px 20px 65px;
+    padding: 70px 20px 80px;
   }
 
   .about-tradition-heading {
-    margin-bottom: 28px;
+    margin-bottom: 32px;
   }
 
   .about-tradition-heading h2 {
     font-size: 30px;
   }
 
+  .about-tradition-heading > p:last-child {
+    font-size: 14px;
+  }
+
   .about-tradition-grid {
     grid-template-columns: 1fr;
-    gap: 15px;
+    gap: 17px;
   }
 
   .about-tradition-card {
     min-height: auto;
-    padding: 27px 22px;
+    padding: 32px 24px 27px;
   }
 
   .about-tradition-card h3 {
@@ -700,35 +1195,40 @@
   }
 
   .about-celebrations {
-    padding: 60px 20px;
+    padding: 70px 20px;
   }
 
   .about-celebrations-container {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 35px;
   }
 
   .about-celebrations-content h2 {
     font-size: 29px;
   }
 
-  .about-celebrations-content > p:not(.about-section-eyebrow) {
+  .about-celebrations-content
+  p:not(.about-section-eyebrow) {
     font-size: 15px;
   }
 
   .about-celebrations-image {
-    min-height: 260px;
+    min-height: 270px;
   }
 
   .about-visit {
-    padding: 60px 20px 65px;
+    padding: 75px 20px 80px;
+  }
+
+  .about-visit::before {
+    inset: 9px;
   }
 
   .about-visit h2 {
     font-size: 31px;
   }
 
-  .about-visit-container > p:not(.about-section-eyebrow) {
+  .about-visit-location {
     font-size: 15px;
   }
 
@@ -749,32 +1249,57 @@
 
   .about-location-chip {
     font-size: 12px;
+    padding: 10px 13px;
   }
 
   .about-visit-actions {
     flex-direction: column;
     align-items: stretch;
   }
+
+  .about-visit-actions a {
+    width: 100%;
+  }
 }
 
 /* =========================================
-   ACCESSIBILITY
+   REDUCED MOTION
 ========================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  .about-introduction-photo,
-  .about-tradition-card,
-  .about-outline-button,
-  .about-visit-primary,
-  .about-visit-secondary {
-    transition: none;
+  .about-hero-background {
+    animation: none !important;
   }
 
-  .about-image-border:hover .about-introduction-photo,
+  .about-introduction-photo,
+  .about-image-decoration,
+  .about-location-chip,
+  .about-tradition-card,
+  .about-tradition-icon,
+  .about-tradition-small-line,
+  .about-celebrations-photo,
+  .about-outline-button,
+  .about-outline-button svg,
+  .about-visit-primary,
+  .about-visit-secondary,
+  .about-visit-actions svg {
+    transition: none !important;
+  }
+
+  .about-introduction-image:hover
+  .about-introduction-photo,
+  .about-introduction-image:hover
+  .about-image-decoration,
+  .about-location-chip:hover,
   .about-tradition-card:hover,
+  .about-tradition-card:hover
+  .about-tradition-icon,
+  .about-celebrations-image-frame:hover
+  .about-celebrations-photo,
   .about-outline-button:hover,
-  .about-visit-primary:hover,
-  .about-visit-secondary:hover {
-    transform: none;
+  .about-outline-button:hover svg,
+  .about-visit-actions a:hover,
+  .about-visit-actions a:hover svg {
+    transform: none !important;
   }
 }

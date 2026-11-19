@@ -1,4 +1,3 @@
-
 :root {
   --font-heading: var(--font-anek);
   --font-body: var(--font-anek);
@@ -21,6 +20,7 @@ body {
   padding: 0;
   font-family: var(--font-anek), sans-serif;
   background: var(--temple-cream);
+  /* background: linear-gradient(110deg, #fff7e9 0%, #faead4 100%); */
 }
 
 h1,
@@ -45,4 +45,52 @@ a {
 button,
 a {
   -webkit-tap-highlight-color: transparent;
+}
+
+/* =========================================
+   PREMIUM WEBSITE INTERACTIONS
+========================================= */
+
+:root {
+  --temple-gold: #d9ad57;
+  --temple-gold-light: #f0d28c;
+  --temple-green: #103a28;
+  --temple-ivory: #fff8ed;
+
+  --temple-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Smooth in-page navigation */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Refined focus treatment */
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--temple-gold);
+  outline-offset: 4px;
+}
+
+/* Improved image rendering */
+
+img {
+  max-width: 100%;
+}
+
+/* Text selection */
+
+::selection {
+  background: #d6b36f;
+  color: #102d20;
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }

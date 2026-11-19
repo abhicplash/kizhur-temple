@@ -1,6 +1,6 @@
-
 import { Anek_Malayalam } from "next/font/google";
 import "./globals.css";
+import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
 
 const anekMalayalam = Anek_Malayalam({
   subsets: ["malayalam", "latin"],
@@ -19,6 +19,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ml">
       <body className={anekMalayalam.variable}>
+        <ScrollToTop />
         {children}
       </body>
     </html>

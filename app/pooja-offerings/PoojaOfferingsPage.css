@@ -1,12 +1,20 @@
 
 /* =========================================
    KIZHUR THERU TEMPLE
-   POOJA & OFFERINGS PAGE
+   POOJA & OFFERINGS — HERITAGE EDITION
 ========================================= */
 
 .pooja-page {
+  --pooja-green: #103b29;
+  --pooja-deep: #052719;
+  --pooja-gold: #c59645;
+  --pooja-gold-light: #edc979;
+  --pooja-cream: #fff8ed;
+  --pooja-text: #403123;
+  --pooja-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
   width: 100%;
-  overflow: hidden;
+  overflow: clip;
   font-family: var(--font-anek), sans-serif;
 }
 
@@ -17,34 +25,82 @@
 }
 
 /* =========================================
-   1. HERO
+   01 — CINEMATIC HERO
 ========================================= */
 
 .pooja-page-hero {
   position: relative;
   isolation: isolate;
 
-  min-height: 440px;
-  padding: 140px 5% 75px;
-
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 
-  background-image:
-    linear-gradient(
-      90deg,
-      rgba(1, 27, 15, 0.70),
-      rgba(1, 27, 15, 0.18)
-    ),
-    url("/images/temple-hero.webp");
+  min-height: 465px;
+  padding: 145px 5% 90px;
 
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  overflow: hidden;
+  background: #092619;
 
   color: #fff7e8;
   text-align: center;
+}
+
+.pooja-page-hero-background {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 24, 14, 0.82),
+      rgba(0, 28, 16, 0.44),
+      rgba(0, 24, 14, 0.68)
+    ),
+    url("/images/temple-hero.webp")
+      center / cover no-repeat;
+
+  animation: poojaHeroZoom 4.5s
+    var(--pooja-ease) both;
+}
+
+@keyframes poojaHeroZoom {
+  from {
+    transform: scale(1.065);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+.pooja-page-hero::before,
+.pooja-page-hero::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+
+  top: 36%;
+  width: 1px;
+  height: 36%;
+
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(240, 198, 113, 0.32),
+    transparent
+  );
+
+  pointer-events: none;
+}
+
+.pooja-page-hero::before {
+  left: 4%;
+}
+
+.pooja-page-hero::after {
+  right: 4%;
 }
 
 .pooja-page-hero-content {
@@ -52,14 +108,14 @@
   z-index: 2;
 
   width: 100%;
-  max-width: 900px;
+  max-width: 920px;
 }
 
 .pooja-page-hero-intro {
-  margin: 0 0 12px;
+  margin: 0 0 17px;
 
-  color: #f7e2bb;
-  font-size: clamp(15px, 1.6vw, 20px);
+  color: #f1d5a0;
+  font-size: clamp(15px, 1.6vw, 19px);
   font-weight: 500;
   line-height: 1.65;
 }
@@ -67,92 +123,154 @@
 .pooja-page-hero h1 {
   margin: 0;
 
-  color: #f5d693;
-  font-size: clamp(36px, 5vw, 62px);
+  color: #f4d48f;
+  font-size: clamp(38px, 4.5vw, 61px);
   font-weight: 600;
-  line-height: 1.4;
+  line-height: 1.45;
+
+  text-shadow: 0 4px 25px rgba(0, 0, 0, 0.17);
 }
 
 .pooja-page-hero-divider {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 13px;
+  gap: 15px;
 
-  margin: 16px auto 20px;
-  color: #e9bd62;
+  margin: 22px auto 20px;
+  color: #e8bf68;
 }
 
 .pooja-page-hero-divider span {
-  width: 75px;
+  width: 78px;
   height: 1px;
-  background: #dfb55a;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #e5b962,
+    transparent
+  );
 }
 
 .pooja-page-breadcrumb {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 12px;
 
-  color: #f9e9cb;
-  font-size: 14px;
+  color: #f2e4c9;
+  font-size: 13px;
+  line-height: 1.6;
 }
 
 .pooja-page-breadcrumb a {
   color: inherit;
   text-decoration: none;
+
+  transition: color 0.3s ease;
 }
 
 .pooja-page-breadcrumb a:hover {
-  color: #eec36b;
+  color: #f6ce7d;
 }
 
 .pooja-page-breadcrumb > span:nth-child(2) {
-  color: #dfb55a;
+  color: #d4a54c;
 }
 
-/* =========================================
-   SHARED ELEMENTS
-========================================= */
+.pooja-hero-bottom-line {
+  position: absolute;
+  z-index: 2;
 
-.pooja-page-label {
-  margin: 0 0 11px;
+  bottom: 0;
+  left: 0;
+  right: 0;
 
-  color: #9b5614;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.6;
-}
-
-.pooja-page-gold-rule {
-  width: 95px;
-  height: 2px;
-  margin: 20px 0 25px;
+  height: 1px;
 
   background: linear-gradient(
     90deg,
-    #b97823,
-    #efd39b,
+    transparent,
+    rgba(230, 182, 91, 0.6),
     transparent
   );
 }
+
+/* =========================================
+   SHARED SECTION DETAILS
+========================================= */
+
+.pooja-page-label {
+  margin: 0 0 15px;
+
+  color: #965818;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.55;
+}
+
+.pooja-inline-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pooja-inline-label > span {
+  display: block;
+  flex-shrink: 0;
+
+  width: 34px;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    #b68038,
+    rgba(182, 128, 56, 0.2)
+  );
+}
+
+.pooja-page-gold-rule {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  width: 140px;
+  margin: 22px 0 28px;
+
+  color: #b98335;
+}
+
+.pooja-page-gold-rule > span {
+  flex: 1;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    #b98335,
+    rgba(185, 131, 53, 0.12)
+  );
+}
+
+/* =========================================
+   SHARED OUTLINE BUTTON
+========================================= */
 
 .pooja-page-outline-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 13px;
 
-  padding: 11px 23px;
   max-width: 100%;
+  padding: 12px 24px;
 
-  border: 1.5px solid #b97823;
+  border: 1px solid #b97823;
   border-radius: 40px;
 
-  color: #8f4c10;
   background: transparent;
+  color: #8f4c10;
 
   font-size: 15px;
   font-weight: 600;
@@ -160,41 +278,67 @@
   text-decoration: none;
 
   transition:
-    background 0.25s ease,
-    transform 0.25s ease;
+    background 0.35s ease,
+    color 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s var(--pooja-ease);
 }
 
 .pooja-page-outline-button:hover {
-  background: rgba(186, 123, 36, 0.10);
-  transform: translateY(-2px);
+  background: rgba(186, 123, 36, 0.11);
+  color: #754007;
+
+  box-shadow: 0 8px 20px rgba(96, 58, 18, 0.08);
+  transform: translateY(-3px);
 }
 
-.pooja-page-outline-button:focus-visible,
-.pooja-page-gold-button:focus-visible {
-  outline: 2px solid #b97823;
-  outline-offset: 3px;
+.pooja-page-outline-button svg {
+  flex-shrink: 0;
+  transition: transform 0.35s ease;
+}
+
+.pooja-page-outline-button:hover svg {
+  transform: translateX(5px);
 }
 
 /* =========================================
-   2. INTRODUCTION
+   02 — TEMPLE INTRODUCTION
 ========================================= */
 
 .pooja-page-intro {
   position: relative;
+  isolation: isolate;
 
-  padding: 90px 5%;
+  padding: 105px 5% 110px;
 
   background:
     radial-gradient(
-      ellipse at 90% 80%,
-      rgba(219, 167, 83, 0.17),
-      transparent 45%
+      ellipse at 92% 82%,
+      rgba(208, 163, 90, 0.16),
+      transparent 48%
     ),
     linear-gradient(
-      120deg,
-      #fff8ed,
-      #f8e7cd
+      125deg,
+      #fffaf0,
+      #f7e7cd
     );
+}
+
+.pooja-page-intro::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+
+  top: -180px;
+  right: -160px;
+
+  width: 480px;
+  height: 480px;
+
+  border: 1px solid rgba(188, 135, 62, 0.09);
+  border-radius: 50%;
+
+  pointer-events: none;
 }
 
 .pooja-page-intro-container {
@@ -208,50 +352,117 @@
     minmax(0, 1fr);
 
   align-items: center;
-  gap: clamp(35px, 6vw, 85px);
+  gap: clamp(45px, 6vw, 90px);
+}
+
+.pooja-intro-reveal {
+  width: 100%;
+  min-width: 0;
+}
+
+/* Heritage image composition */
+
+.pooja-page-image-composition {
+  position: relative;
+  width: 100%;
+  padding: 17px;
+}
+
+.pooja-page-image-frame {
+  padding: 8px;
+
+  border: 1px solid rgba(184, 130, 56, 0.47);
+  border-radius:
+    43% 12% 39% 11% /
+    16% 40% 14% 36%;
+
+  background: rgba(255, 249, 235, 0.6);
+
+  box-shadow: 0 20px 48px rgba(88, 49, 12, 0.13);
 }
 
 .pooja-page-intro-image {
   position: relative;
+
   width: 100%;
-  aspect-ratio: 1.1;
+  aspect-ratio: 1.04;
 
-  border: 7px solid #fff4df;
-  border-radius: 22px;
   overflow: hidden;
+  border-radius:
+    43% 12% 39% 11% /
+    16% 40% 14% 36%;
 
-  box-shadow:
-    0 16px 38px rgba(93, 56, 18, 0.16);
+  background: #e3cfaf;
 }
 
 .pooja-page-intro-photo {
   object-fit: cover;
   object-position: center;
-  transition: transform 0.5s ease;
+
+  transition: transform 1.2s var(--pooja-ease);
 }
 
-.pooja-page-intro-image:hover .pooja-page-intro-photo {
-  transform: scale(1.04);
+.pooja-page-image-composition:hover
+.pooja-page-intro-photo {
+  transform: scale(1.055);
+}
+
+.pooja-image-corner {
+  position: absolute;
+
+  width: 52px;
+  height: 52px;
+
+  pointer-events: none;
+}
+
+.pooja-image-corner-top {
+  left: 0;
+  top: 0;
+
+  border-top: 1px solid #c39a56;
+  border-left: 1px solid #c39a56;
+}
+
+.pooja-image-corner-bottom {
+  right: 0;
+  bottom: 0;
+
+  border-right: 1px solid #c39a56;
+  border-bottom: 1px solid #c39a56;
 }
 
 .pooja-page-image-accent {
   position: absolute;
-  right: 15px;
-  bottom: 15px;
+
+  right: -7px;
+  bottom: 20px;
 
   display: grid;
   place-items: center;
 
-  width: 48px;
-  height: 48px;
+  width: 66px;
+  height: 66px;
 
-  border: 1px solid #c38b32;
+  border: 1px solid rgba(183, 123, 35, 0.65);
   border-radius: 50%;
 
-  background: #fff1d4;
-  color: #a76a17;
-  font-size: 24px;
+  background: #fff1d7;
+  color: #ad7626;
+
+  font-size: 27px;
+
+  box-shadow: 0 10px 25px rgba(87, 50, 15, 0.13);
+
+  transition: transform 0.65s var(--pooja-ease);
 }
+
+.pooja-page-image-composition:hover
+.pooja-page-image-accent {
+  transform: rotate(45deg);
+}
+
+/* Introduction content */
 
 .pooja-page-intro-text {
   min-width: 0;
@@ -263,36 +474,39 @@
   color: #113b28;
   font-size: clamp(29px, 3vw, 42px);
   font-weight: 600;
-  line-height: 1.45;
+  line-height: 1.5;
 }
 
-.pooja-page-intro-text > p:not(.pooja-page-label) {
+.pooja-page-intro-paragraph {
+  max-width: 630px;
   margin: 0 0 19px;
 
-  color: #423324;
+  color: #403123;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.95;
 }
 
-.pooja-page-intro-text .pooja-page-outline-button {
-  margin-top: 10px;
-}
-
 /* =========================================
-   3. OFFERINGS SECTION
+   03 — OFFERINGS SECTION
 ========================================= */
 
 .pooja-page-offerings {
   position: relative;
+  isolation: isolate;
 
-  padding: 85px 5% 90px;
+  padding: 100px 5% 110px;
 
   background:
+    radial-gradient(
+      circle at 5% 90%,
+      rgba(199, 151, 77, 0.11),
+      transparent 40%
+    ),
     linear-gradient(
       135deg,
-      #fffaf0 0%,
-      #f8e8d0 100%
+      #fff9ef,
+      #f8e8d0
     );
 }
 
@@ -303,18 +517,44 @@
 }
 
 .pooja-page-section-heading {
-  max-width: 780px;
-  margin: 0 auto 43px;
+  max-width: 800px;
+  margin: 0 auto 48px;
+
   text-align: center;
 }
 
 .pooja-page-section-heading h2 {
-  margin: 0 0 14px;
+  margin: 0 0 17px;
 
   color: #123b28;
-  font-size: clamp(29px, 3.1vw, 42px);
+  font-size: clamp(30px, 3.2vw, 43px);
   font-weight: 600;
   line-height: 1.45;
+}
+
+.pooja-centered-divider,
+.pooja-dark-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+
+  margin: 0 auto 21px;
+
+  color: #be8b3c;
+}
+
+.pooja-centered-divider span,
+.pooja-dark-divider span {
+  width: 57px;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(190, 139, 60, 0.7),
+    transparent
+  );
 }
 
 .pooja-page-section-heading > p:last-child {
@@ -322,7 +562,7 @@
 
   color: #51402d;
   font-size: 16px;
-  line-height: 1.85;
+  line-height: 1.9;
 }
 
 /* =========================================
@@ -332,60 +572,115 @@
 .pooja-page-offering-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px;
+  align-items: stretch;
+  gap: 23px;
+}
+
+.pooja-offering-reveal {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
 }
 
 .pooja-page-offering-card {
   position: relative;
-  min-width: 0;
+  isolation: isolate;
 
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 
-  padding: 30px 27px;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
 
-  border: 1px solid rgba(188, 132, 49, 0.23);
-  border-radius: 17px;
+  padding: 37px 29px 32px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(188, 132, 49, 0.27);
+  border-radius: 18px;
 
   background: linear-gradient(
     150deg,
-    #fffaf1,
-    #f9e9d2
+    #fffcf5,
+    #f9ebd7
   );
 
   box-shadow:
-    0 9px 25px rgba(98, 61, 19, 0.09);
+    0 10px 28px rgba(98, 61, 19, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
 
   transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
+    transform 0.45s var(--pooja-ease),
+    border-color 0.4s ease,
+    background 0.4s ease,
+    box-shadow 0.4s ease;
 }
 
 .pooja-page-offering-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-7px);
 
-  box-shadow:
-    0 15px 32px rgba(98, 61, 19, 0.15);
+  border-color: rgba(187, 127, 42, 0.65);
+
+  background: linear-gradient(
+    150deg,
+    #fffdf8,
+    #f6e4c7
+  );
+
+  box-shadow: 0 20px 40px rgba(98, 61, 19, 0.15);
 }
+
+.pooja-page-card-number {
+  position: absolute;
+
+  right: 22px;
+  top: 19px;
+
+  color: rgba(154, 97, 27, 0.46);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+/* Icon frame */
 
 .pooja-page-offering-icon {
   display: grid;
   place-items: center;
 
-  width: 70px;
-  height: 70px;
-  margin-bottom: 21px;
+  width: 72px;
+  height: 72px;
+  margin-bottom: 25px;
 
-  border: 1px solid #ead1a3;
-  border-radius: 16px;
+  border: 1px solid #e5c995;
+  border-radius: 18px;
 
-  background: #fff2dc;
-  color: #b47a20;
+  background: linear-gradient(
+    145deg,
+    #fff8e9,
+    #f7e3bd
+  );
+
+  color: #ad741f;
+
+  transition:
+    transform 0.45s var(--pooja-ease),
+    background 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.pooja-page-offering-card:hover
+.pooja-page-offering-icon {
+  transform: translateY(-4px);
+
+  background: #fff3d8;
+  border-color: #d0a65e;
 }
 
 .pooja-page-offering-card h3 {
-  margin: 0 0 12px;
+  margin: 0 0 15px;
 
   color: #123b28;
   font-size: 24px;
@@ -393,79 +688,136 @@
   line-height: 1.45;
 }
 
+.pooja-card-small-rule {
+  width: 46px;
+  height: 1px;
+  margin-bottom: 18px;
+
+  background: linear-gradient(
+    90deg,
+    #bb8537,
+    rgba(187, 133, 55, 0.08)
+  );
+
+  transition: width 0.4s ease;
+}
+
+.pooja-page-offering-card:hover
+.pooja-card-small-rule {
+  width: 82px;
+}
+
 .pooja-page-offering-card > p {
-  margin: 0 0 24px;
+  margin: 0 0 26px;
 
   color: #544331;
   font-size: 15px;
-  line-height: 1.8;
+  line-height: 1.85;
 }
 
 .pooja-page-card-link {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
+  gap: 10px;
 
   margin-top: auto;
 
-  color: #9b5c18;
+  color: #965719;
   font-size: 14px;
   font-weight: 600;
+  line-height: 1.6;
   text-decoration: none;
+
+  transition: color 0.3s ease;
+}
+
+.pooja-page-card-link svg {
+  flex-shrink: 0;
+  transition: transform 0.35s ease;
 }
 
 .pooja-page-card-link:hover {
-  color: #673a0c;
+  color: #683b0f;
 }
 
-.pooja-page-card-link:focus-visible {
-  outline: 2px solid #b97823;
-  outline-offset: 4px;
+.pooja-page-card-link:hover svg {
+  transform: translate(3px, -3px);
 }
+
+/* Committee confirmation note */
 
 .pooja-page-offerings-note {
-  max-width: 880px;
-  margin: 35px auto 0;
+  max-width: 900px;
+  margin: 41px auto 0;
 
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
+
+  padding: 18px 23px;
+
+  border: 1px solid rgba(187, 130, 51, 0.19);
+  border-radius: 12px;
+
+  background: rgba(255, 250, 239, 0.55);
 
   color: #765b3b;
   font-size: 13px;
-  line-height: 1.75;
-  text-align: center;
+  line-height: 1.85;
+  text-align: left;
 }
 
 .pooja-page-offerings-note svg {
   flex-shrink: 0;
-  margin-top: 2px;
+  margin-top: 3px;
+
+  color: #b17c32;
 }
 
 /* =========================================
-   4. INFORMATION SECTION
+   04 — TIMINGS & INFORMATION
 ========================================= */
 
 .pooja-page-information {
   position: relative;
+  isolation: isolate;
 
-  padding: 85px 5% 90px;
+  padding: 100px 5% 110px;
+
+  overflow: hidden;
 
   background:
     radial-gradient(
-      circle at 70% 10%,
-      rgba(56, 99, 61, 0.26),
-      transparent 50%
+      ellipse at 50% 0%,
+      rgba(50, 101, 66, 0.31),
+      transparent 57%
     ),
     linear-gradient(
       135deg,
-      #052719,
+      #042416,
       #103a28 55%,
       #052416
     );
 
   color: #fff5e1;
+}
+
+.pooja-page-information::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+
+  top: -260px;
+  right: -190px;
+
+  width: 500px;
+  height: 500px;
+
+  border: 1px solid rgba(230, 191, 104, 0.09);
+  border-radius: 50%;
+
+  pointer-events: none;
 }
 
 .pooja-page-information-container {
@@ -475,62 +827,157 @@
 }
 
 .pooja-page-information-header {
-  max-width: 770px;
-  margin: 0 auto 38px;
+  max-width: 790px;
+  margin: 0 auto 46px;
 
   text-align: center;
 }
 
 .pooja-page-information .pooja-page-label {
-  color: #efc779;
+  color: #ecc77e;
 }
 
 .pooja-page-information-header h2 {
-  margin: 0 0 15px;
+  margin: 0 0 17px;
 
-  color: #fff1d6;
-  font-size: clamp(29px, 3.3vw, 43px);
+  color: #fff2d8;
+  font-size: clamp(30px, 3.3vw, 43px);
   font-weight: 600;
   line-height: 1.45;
+}
+
+.pooja-page-information .pooja-dark-divider {
+  color: #eac477;
+}
+
+.pooja-page-information
+.pooja-dark-divider span {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(234, 196, 119, 0.7),
+    transparent
+  );
 }
 
 .pooja-page-information-header > p:last-child {
   margin: 0;
 
-  color: #e9dfcc;
+  color: #e7dfcc;
   font-size: 16px;
-  line-height: 1.85;
+  line-height: 1.9;
 }
+
+/* Information grid */
 
 .pooja-page-info-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
+  align-items: stretch;
+  gap: 22px;
+}
+
+.pooja-info-reveal {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
 }
 
 .pooja-page-info-card {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
   min-width: 0;
-  padding: 32px 25px;
+
+  padding: 38px 27px 36px;
 
   border: 1px solid rgba(229, 186, 94, 0.38);
-  border-radius: 17px;
+  border-radius: 18px;
 
-  background: rgba(255, 248, 231, 0.055);
+  background: linear-gradient(
+    145deg,
+    rgba(255, 248, 225, 0.085),
+    rgba(255, 248, 225, 0.025)
+  );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 239, 187, 0.05);
+
   text-align: center;
+
+  transition:
+    transform 0.45s var(--pooja-ease),
+    border-color 0.4s ease,
+    background 0.4s ease;
 }
 
-.pooja-page-info-card > svg {
-  color: #e9bc62;
-  margin-bottom: 18px;
+.pooja-page-info-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(240, 199, 111, 0.78);
+
+  background: linear-gradient(
+    145deg,
+    rgba(255, 248, 225, 0.12),
+    rgba(255, 248, 225, 0.035)
+  );
+}
+
+.pooja-info-icon {
+  display: grid;
+  place-items: center;
+
+  width: 73px;
+  height: 73px;
+
+  margin-bottom: 22px;
+
+  border: 1px solid rgba(228, 184, 88, 0.42);
+  border-radius: 50%;
+
+  background: rgba(232, 188, 93, 0.08);
+  color: #efcb7d;
+
+  transition:
+    transform 0.45s var(--pooja-ease),
+    background 0.35s ease;
+}
+
+.pooja-page-info-card:hover .pooja-info-icon {
+  transform: translateY(-3px);
+  background: rgba(232, 188, 93, 0.13);
 }
 
 .pooja-page-info-card h3 {
-  margin: 0 0 12px;
+  margin: 0 0 16px;
 
-  color: #f9dfad;
+  color: #ffe4ad;
   font-size: 23px;
   font-weight: 600;
   line-height: 1.5;
+}
+
+.pooja-info-small-rule {
+  width: 48px;
+  height: 1px;
+  margin-bottom: 17px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #dfb86d,
+    transparent
+  );
+
+  transition: width 0.4s ease;
+}
+
+.pooja-page-info-card:hover .pooja-info-small-rule {
+  width: 76px;
 }
 
 .pooja-page-info-card p {
@@ -538,58 +985,86 @@
 
   color: #efe3d2;
   font-size: 15px;
-  line-height: 1.8;
+  line-height: 1.9;
 }
+
+/* Contact action */
 
 .pooja-page-info-action {
   display: flex;
   justify-content: center;
-  margin-top: 35px;
+
+  margin-top: 42px;
 }
+
+/* =========================================
+   GOLD BUTTON
+========================================= */
 
 .pooja-page-gold-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
   gap: 11px;
 
   max-width: 100%;
-  padding: 12px 24px;
+  min-height: 48px;
+  padding: 12px 25px;
 
-  border: 1.5px solid #edc36c;
+  border: 1px solid #edc36c;
   border-radius: 40px;
 
-  color: #123321;
   background: #edc36c;
+  color: #123321;
 
   font-size: 15px;
   font-weight: 600;
+  line-height: 1.55;
   text-align: center;
   text-decoration: none;
 
   transition:
-    background 0.25s ease,
-    transform 0.25s ease;
+    background 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s var(--pooja-ease);
 }
 
 .pooja-page-gold-button:hover {
   background: #ffdc90;
-  transform: translateY(-2px);
+  box-shadow: 0 9px 22px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
+}
+
+.pooja-page-gold-button svg {
+  flex-shrink: 0;
+  transition: transform 0.35s ease;
+}
+
+.pooja-page-gold-button:hover svg:last-child {
+  transform: translateX(5px);
 }
 
 /* =========================================
-   5. GALLERY FEATURE
+   05 — DEVOTIONAL PHOTO FEATURE
 ========================================= */
 
 .pooja-page-feature {
-  padding: 85px 5%;
+  position: relative;
+  isolation: isolate;
 
-  background: linear-gradient(
-    120deg,
-    #fff8ee,
-    #f7e6cc
-  );
+  padding: 105px 5%;
+
+  background:
+    radial-gradient(
+      circle at 5% 95%,
+      rgba(206, 157, 81, 0.12),
+      transparent 45%
+    ),
+    linear-gradient(
+      120deg,
+      #fffaf0,
+      #f7e6cb
+    );
 }
 
 .pooja-page-feature-container {
@@ -603,96 +1078,196 @@
     minmax(0, 48%);
 
   align-items: center;
-  gap: clamp(35px, 6vw, 80px);
+  gap: clamp(45px, 6vw, 85px);
+}
+
+.pooja-page-feature-content {
+  min-width: 0;
 }
 
 .pooja-page-feature-content h2 {
-  margin: 0 0 17px;
+  margin: 0;
 
   color: #123b28;
-  font-size: clamp(28px, 3vw, 40px);
+  font-size: clamp(29px, 3vw, 40px);
   font-weight: 600;
-  line-height: 1.45;
+  line-height: 1.5;
 }
 
-.pooja-page-feature-content > p:not(.pooja-page-label) {
+.pooja-feature-description {
   max-width: 510px;
-  margin: 0 0 25px;
+  margin: 0 0 29px;
 
   color: #433323;
   font-size: 16px;
-  line-height: 1.9;
+  line-height: 1.95;
+}
+
+/* Featured image */
+
+.pooja-feature-reveal {
+  width: 100%;
+  min-width: 0;
+}
+
+.pooja-page-feature-frame {
+  position: relative;
+
+  width: 100%;
+  padding: 11px;
+
+  border: 1px solid rgba(187, 133, 62, 0.45);
+  border-radius: 23px;
+
+  background: rgba(255, 248, 234, 0.7);
+
+  box-shadow: 0 17px 42px rgba(100, 60, 17, 0.12);
 }
 
 .pooja-page-feature-image {
   position: relative;
-  width: 100%;
-  min-height: 330px;
+  min-height: 350px;
 
   overflow: hidden;
-  border: 4px solid #fff4dc;
-  border-radius: 19px;
 
-  box-shadow:
-    0 14px 34px rgba(100, 60, 17, 0.15);
+  border-radius: 14px;
+  background: #ddc69e;
 }
 
-.pooja-page-feature-image img {
+.pooja-feature-photo {
   object-fit: cover;
+
+  transition:
+    transform 1.15s var(--pooja-ease),
+    filter 0.5s ease;
+}
+
+.pooja-page-feature-frame:hover .pooja-feature-photo {
+  transform: scale(1.055);
+  filter: saturate(1.06);
+}
+
+.pooja-feature-corner {
+  position: absolute;
+
+  right: -7px;
+  bottom: -7px;
+
+  width: 56px;
+  height: 56px;
+
+  border-right: 1px solid #c59645;
+  border-bottom: 1px solid #c59645;
+
+  pointer-events: none;
 }
 
 /* =========================================
-   6. CONTACT SECTION
+   06 — CONTACT CTA
 ========================================= */
 
 .pooja-page-contact {
   position: relative;
+  isolation: isolate;
 
-  padding: 78px 5% 85px;
+  padding: 95px 5% 105px;
+
+  overflow: hidden;
 
   background:
     linear-gradient(
-      rgba(2, 31, 18, 0.92),
+      rgba(2, 31, 18, 0.93),
       rgba(2, 31, 18, 0.94)
     ),
-    url("/images/temple-hero.webp");
-
-  background-size: cover;
-  background-position: center;
+    url("/images/temple-hero.webp")
+      center / cover no-repeat;
 
   color: #fff0d2;
   text-align: center;
 }
 
+.pooja-page-contact::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+
+  inset: 15px;
+
+  border: 1px solid rgba(229, 185, 89, 0.14);
+
+  pointer-events: none;
+}
+
 .pooja-page-contact-inner {
+  position: relative;
+  z-index: 1;
+
   max-width: 780px;
   margin: 0 auto;
 }
 
-.pooja-page-contact-inner > svg {
-  margin-bottom: 18px;
-  color: #efc56a;
+.pooja-contact-icon {
+  display: grid;
+  place-items: center;
+
+  width: 72px;
+  height: 72px;
+
+  margin: 0 auto 23px;
+
+  border: 1px solid rgba(232, 184, 80, 0.6);
+  border-radius: 50%;
+
+  background: rgba(236, 193, 108, 0.06);
+  color: #efc66a;
+
+  box-shadow:
+    inset 0 0 0 5px rgba(239, 198, 106, 0.035);
 }
 
 .pooja-page-contact .pooja-page-label {
-  color: #efc56a;
+  color: #efc66a;
+  margin-bottom: 12px;
 }
 
 .pooja-page-contact h2 {
-  margin: 0 0 13px;
+  margin: 0 0 16px;
 
-  color: #fff0d2;
-  font-size: clamp(29px, 3.5vw, 44px);
+  color: #fff0cf;
+  font-size: clamp(30px, 3.6vw, 46px);
   font-weight: 600;
   line-height: 1.45;
 }
 
-.pooja-page-contact-inner > p:not(.pooja-page-label) {
-  margin: 0 0 27px;
+.pooja-page-contact .pooja-dark-divider {
+  margin-bottom: 23px;
+  color: #eac477;
+}
 
-  color: #eee3d0;
-  font-size: 17px;
+.pooja-page-contact .pooja-dark-divider span {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(234, 196, 119, 0.7),
+    transparent
+  );
+}
+
+.pooja-contact-location {
+  margin: 0 0 31px;
+
+  color: #f3e7d2;
+  font-size: 16px;
   line-height: 1.7;
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+.pooja-page a:focus-visible {
+  outline: 2px solid #d9a84d;
+  outline-offset: 4px;
 }
 
 /* =========================================
@@ -701,7 +1276,7 @@
 
 @media (max-width: 1000px) {
   .pooja-page-hero {
-    min-height: 390px;
+    min-height: 405px;
   }
 
   .pooja-page-intro-container {
@@ -712,13 +1287,13 @@
     font-size: 32px;
   }
 
-  .pooja-page-intro-text > p:not(.pooja-page-label) {
+  .pooja-page-intro-paragraph {
     font-size: 15px;
   }
 
   .pooja-page-offering-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 17px;
+    gap: 18px;
   }
 
   .pooja-page-feature-container {
@@ -732,9 +1307,17 @@
 
 @media (max-width: 750px) {
   .pooja-page-hero {
-    min-height: 350px;
-    padding: 115px 20px 55px;
+    min-height: 380px;
+    padding: 125px 20px 65px;
+  }
+
+  .pooja-page-hero-background {
     background-position: 65% center;
+  }
+
+  .pooja-page-hero::before,
+  .pooja-page-hero::after {
+    display: none;
   }
 
   .pooja-page-hero h1 {
@@ -745,40 +1328,57 @@
     font-size: 14px;
   }
 
+  .pooja-page-hero-divider span {
+    width: 55px;
+  }
+
   .pooja-page-breadcrumb {
     font-size: 12px;
   }
 
   .pooja-page-intro {
-    padding: 60px 20px;
+    padding: 70px 20px 80px;
   }
 
   .pooja-page-intro-container {
     grid-template-columns: 1fr;
-    gap: 35px;
+    gap: 38px;
+  }
+
+  .pooja-page-image-composition {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 9px;
   }
 
   .pooja-page-intro-image {
-    max-width: 480px;
-    margin: 0 auto;
-    aspect-ratio: 1.2;
+    aspect-ratio: 1.17;
+  }
+
+  .pooja-page-image-accent {
+    right: 0;
+    bottom: 0;
+
+    width: 52px;
+    height: 52px;
+    font-size: 22px;
   }
 
   .pooja-page-intro-text h2 {
     font-size: 30px;
   }
 
-  .pooja-page-intro-text > p:not(.pooja-page-label) {
+  .pooja-page-intro-paragraph {
     font-size: 15px;
     line-height: 1.85;
   }
 
   .pooja-page-offerings {
-    padding: 60px 20px 65px;
+    padding: 70px 20px 80px;
   }
 
   .pooja-page-section-heading {
-    margin-bottom: 30px;
+    margin-bottom: 34px;
   }
 
   .pooja-page-section-heading h2 {
@@ -791,17 +1391,17 @@
 
   .pooja-page-offering-grid {
     grid-template-columns: 1fr;
-    gap: 15px;
+    gap: 17px;
   }
 
   .pooja-page-offering-card {
-    padding: 26px 23px;
+    padding: 30px 24px;
   }
 
   .pooja-page-offering-icon {
-    width: 62px;
-    height: 62px;
-    margin-bottom: 15px;
+    width: 64px;
+    height: 64px;
+    margin-bottom: 20px;
   }
 
   .pooja-page-offering-card h3 {
@@ -812,8 +1412,17 @@
     font-size: 14px;
   }
 
+  .pooja-page-offerings-note {
+    margin-top: 30px;
+    padding: 16px;
+  }
+
   .pooja-page-information {
-    padding: 60px 20px 65px;
+    padding: 70px 20px 80px;
+  }
+
+  .pooja-page-information-header {
+    margin-bottom: 34px;
   }
 
   .pooja-page-information-header h2 {
@@ -826,11 +1435,11 @@
 
   .pooja-page-info-grid {
     grid-template-columns: 1fr;
-    gap: 15px;
+    gap: 17px;
   }
 
   .pooja-page-info-card {
-    padding: 28px 22px;
+    padding: 32px 24px;
   }
 
   .pooja-page-info-card h3 {
@@ -838,35 +1447,39 @@
   }
 
   .pooja-page-feature {
-    padding: 60px 20px 65px;
+    padding: 70px 20px 80px;
   }
 
   .pooja-page-feature-container {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 35px;
   }
 
   .pooja-page-feature-content h2 {
     font-size: 30px;
   }
 
-  .pooja-page-feature-content > p:not(.pooja-page-label) {
+  .pooja-feature-description {
     font-size: 15px;
   }
 
   .pooja-page-feature-image {
-    min-height: 260px;
+    min-height: 270px;
   }
 
   .pooja-page-contact {
-    padding: 60px 20px 65px;
+    padding: 75px 20px 80px;
+  }
+
+  .pooja-page-contact::before {
+    inset: 9px;
   }
 
   .pooja-page-contact h2 {
     font-size: 30px;
   }
 
-  .pooja-page-contact-inner > p:not(.pooja-page-label) {
+  .pooja-contact-location {
     font-size: 15px;
   }
 }
@@ -893,24 +1506,55 @@
     padding: 11px 17px;
     font-size: 13px;
   }
+
+  .pooja-page-outline-button {
+    padding: 11px 18px;
+    font-size: 14px;
+  }
 }
 
 /* =========================================
-   ACCESSIBILITY
+   REDUCED MOTION
 ========================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  .pooja-page-intro-photo,
-  .pooja-page-offering-card,
-  .pooja-page-outline-button,
-  .pooja-page-gold-button {
-    transition: none;
+  .pooja-page-hero-background {
+    animation: none !important;
   }
 
-  .pooja-page-intro-image:hover .pooja-page-intro-photo,
-  .pooja-page-offering-card:hover,
+  .pooja-page-intro-photo,
+  .pooja-page-image-accent,
+  .pooja-page-outline-button,
+  .pooja-page-outline-button svg,
+  .pooja-page-offering-card,
+  .pooja-page-offering-icon,
+  .pooja-card-small-rule,
+  .pooja-page-card-link svg,
+  .pooja-page-info-card,
+  .pooja-info-icon,
+  .pooja-info-small-rule,
+  .pooja-page-gold-button,
+  .pooja-page-gold-button svg,
+  .pooja-feature-photo {
+    transition: none !important;
+  }
+
+  .pooja-page-image-composition:hover
+  .pooja-page-intro-photo,
+  .pooja-page-image-composition:hover
+  .pooja-page-image-accent,
   .pooja-page-outline-button:hover,
-  .pooja-page-gold-button:hover {
-    transform: none;
+  .pooja-page-outline-button:hover svg,
+  .pooja-page-offering-card:hover,
+  .pooja-page-offering-card:hover
+  .pooja-page-offering-icon,
+  .pooja-page-card-link:hover svg,
+  .pooja-page-info-card:hover,
+  .pooja-page-info-card:hover .pooja-info-icon,
+  .pooja-page-gold-button:hover,
+  .pooja-page-gold-button:hover svg,
+  .pooja-page-feature-frame:hover
+  .pooja-feature-photo {
+    transform: none !important;
   }
 }

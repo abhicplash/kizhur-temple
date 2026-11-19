@@ -1,7 +1,7 @@
 
 /* =========================================
    KIZHUR THERU TEMPLE
-   POOJA & OFFERINGS
+   ELEGANT POOJA & OFFERINGS
 ========================================= */
 
 .home-pooja {
@@ -11,6 +11,8 @@
   width: 100%;
   padding: 62px 5% 58px;
 
+  overflow: hidden;
+
   background: linear-gradient(
     110deg,
     #fff7e9 0%,
@@ -18,7 +20,6 @@
   );
 
   color: #123b28;
-  overflow: hidden;
 }
 
 /* =========================================
@@ -38,8 +39,28 @@
 
   background: #fff7e9;
 
-  border-radius: 50% 50% 0 0 /
+  border-radius:
+    50% 50% 0 0 /
     100% 100% 0 0;
+
+  pointer-events: none;
+}
+
+/* Subtle ambient detail */
+
+.home-pooja::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+
+  right: -150px;
+  top: -140px;
+
+  width: 430px;
+  height: 430px;
+
+  border: 1px solid rgba(186, 135, 65, 0.07);
+  border-radius: 50%;
 
   pointer-events: none;
 }
@@ -55,7 +76,7 @@
   left: -30px;
   bottom: 0;
 
-  width: 120px;
+  width: 145px;
 
   pointer-events: none;
 }
@@ -68,7 +89,7 @@
 }
 
 /* =========================================
-   MAIN CONTENT CONTAINER
+   MAIN LAYOUT
 ========================================= */
 
 .home-pooja-container {
@@ -88,18 +109,27 @@
   gap: 30px;
 }
 
+/* Reveal wrappers */
+
+.home-pooja-content-reveal,
+.home-pooja-cards-reveal {
+  width: 100%;
+  min-width: 0;
+}
+
 /* =========================================
-   LEFT TEXT CONTENT
+   LEFT CONTENT
 ========================================= */
 
 .home-pooja-content {
   position: relative;
   min-width: 0;
+
   padding-left: 45px;
 }
 
 .pooja-label {
-  margin: 0 0 8px;
+  margin: 0 0 10px;
 
   color: #975311;
 
@@ -110,15 +140,50 @@
 }
 
 .home-pooja-content h2 {
-  margin: 0 0 12px;
+  margin: 0 0 10px;
 
   color: #103a28;
 
   font-family: var(--font-anek), sans-serif;
   font-size: clamp(23px, 2.3vw, 32px);
   font-weight: 600;
-  line-height: 1.4;
+  line-height: 1.45;
 }
+
+/* =========================================
+   GOLD DIVIDER
+========================================= */
+
+.pooja-gold-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  width: 120px;
+  margin: 0 0 16px;
+
+  color: #b78328;
+}
+
+.pooja-gold-line {
+  flex: 1;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    #bd8736,
+    rgba(189, 135, 54, 0.12)
+  );
+}
+
+.pooja-gold-symbol {
+  font-size: 13px;
+  line-height: 1;
+}
+
+/* =========================================
+   DESCRIPTION
+========================================= */
 
 .pooja-description {
   max-width: 330px;
@@ -129,27 +194,26 @@
   font-family: var(--font-anek), sans-serif;
   font-size: 14px;
   font-weight: 400;
-  line-height: 1.75;
+  line-height: 1.8;
 }
 
 /* =========================================
-   GOLD OUTLINED BUTTON
+   GOLD OUTLINE BUTTON
 ========================================= */
 
 .pooja-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   gap: 12px;
-  max-width: 100%;
 
+  max-width: 100%;
   padding: 11px 20px;
 
-  border: 1.5px solid #b9781c;
+  border: 1px solid #b9781c;
   border-radius: 40px;
 
-  background: transparent;
+  background: rgba(255, 255, 255, 0.08);
   color: #8f4d0e;
 
   font-family: var(--font-anek), sans-serif;
@@ -159,18 +223,32 @@
   text-decoration: none;
 
   transition:
-    background 0.25s ease,
-    transform 0.25s ease;
+    background 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .pooja-button:hover {
-  background: rgba(185, 120, 28, 0.1);
-  transform: translateY(-2px);
+  background: rgba(185, 120, 28, 0.11);
+
+  box-shadow:
+    0 6px 18px rgba(90, 53, 13, 0.08);
+
+  transform: translateY(-3px);
+}
+
+.pooja-button svg {
+  flex-shrink: 0;
+  transition: transform 0.35s ease;
+}
+
+.pooja-button:hover svg {
+  transform: translateX(5px);
 }
 
 .pooja-button:focus-visible {
   outline: 2px solid #b47a20;
-  outline-offset: 3px;
+  outline-offset: 4px;
 }
 
 /* =========================================
@@ -188,16 +266,21 @@
 }
 
 .home-pooja-card {
+  position: relative;
+  isolation: isolate;
+
   min-width: 0;
-  min-height: 125px;
+  min-height: 132px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  gap: 12px;
-  padding: 16px 8px;
+  gap: 10px;
+  padding: 17px 8px 19px;
+
+  overflow: hidden;
 
   background: linear-gradient(
     150deg,
@@ -205,41 +288,117 @@
     #f9e9d2
   );
 
-  border: 1px solid rgba(184, 131, 54, 0.15);
-  border-radius: 14px;
+  border: 1px solid rgba(184, 131, 54, 0.22);
+  border-radius: 15px;
 
   box-shadow:
-    0 6px 18px rgba(92, 56, 18, 0.1);
+    0 6px 18px rgba(92, 56, 18, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
 
   color: #b47a20;
   text-align: center;
   text-decoration: none;
 
   transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
+    border-color 0.35s ease,
+    background 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
+
+.home-pooja-card:hover {
+  border-color: rgba(183, 123, 35, 0.5);
+
+  background: linear-gradient(
+    150deg,
+    #fffdf5,
+    #f4dfba
+  );
+
+  box-shadow:
+    0 12px 25px rgba(92, 56, 18, 0.15);
+
+  transform: translateY(-5px);
+}
+
+/* =========================================
+   ICON CONTAINER
+========================================= */
+
+.home-pooja-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 55px;
+  height: 55px;
+
+  border: 1px solid rgba(184, 131, 54, 0.18);
+  border-radius: 50%;
+
+  background: rgba(255, 248, 231, 0.7);
+  color: #b47a20;
+
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.35s ease;
+}
+
+.home-pooja-card:hover .home-pooja-card-icon {
+  transform: translateY(-3px) scale(1.05);
+  background: #fff4da;
+}
+
+/* =========================================
+   CARD LABEL
+========================================= */
 
 .home-pooja-card h3 {
   margin: 0;
 
   color: #30251a;
+
   font-family: var(--font-anek), sans-serif;
   font-size: 13px;
   font-weight: 600;
   line-height: 1.45;
 }
 
-.home-pooja-card:hover {
-  transform: translateY(-4px);
+/* Fine line at the bottom of each card */
 
-  box-shadow:
-    0 10px 22px rgba(92, 56, 18, 0.16);
+.home-pooja-card-accent {
+  position: absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  width: 38px;
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #c58e38,
+    transparent
+  );
+
+  transform: translateX(-50%) scaleX(0.65);
+
+  opacity: 0.55;
+
+  transition:
+    transform 0.4s ease,
+    opacity 0.4s ease;
+}
+
+.home-pooja-card:hover .home-pooja-card-accent {
+  transform: translateX(-50%) scaleX(1.2);
+  opacity: 1;
 }
 
 .home-pooja-card:focus-visible {
   outline: 2px solid #b47a20;
-  outline-offset: 3px;
+  outline-offset: 4px;
 }
 
 /* =========================================
@@ -269,7 +428,18 @@
   }
 
   .home-pooja-card {
-    min-height: 115px;
+    min-height: 120px;
+    padding: 15px 6px;
+  }
+
+  .home-pooja-card-icon {
+    width: 47px;
+    height: 47px;
+  }
+
+  .home-pooja-card-icon svg {
+    width: 28px;
+    height: 28px;
   }
 
   .home-pooja-card h3 {
@@ -283,12 +453,12 @@
 
 @media (max-width: 1000px) {
   .home-pooja {
-    padding: 50px 5% 52px;
+    padding: 50px 5% 55px;
   }
 
   .home-pooja-container {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 30px;
   }
 
   .home-pooja-content {
@@ -309,7 +479,7 @@
   }
 
   .home-pooja-card {
-    min-height: 110px;
+    min-height: 115px;
   }
 }
 
@@ -319,7 +489,7 @@
 
 @media (max-width: 600px) {
   .home-pooja {
-    padding: 42px 18px 50px;
+    padding: 44px 18px 53px;
   }
 
   .home-pooja::before {
@@ -328,7 +498,7 @@
   }
 
   .home-pooja-container {
-    gap: 24px;
+    gap: 26px;
   }
 
   .home-pooja-content {
@@ -361,7 +531,8 @@
   }
 
   .home-pooja-card {
-    min-height: 110px;
+    min-height: 120px;
+    padding: 16px 8px;
   }
 
   .home-pooja-card:last-child {
@@ -382,6 +553,11 @@
     padding: 10px 15px;
     font-size: 13px;
   }
+
+  .home-pooja-card-icon {
+    width: 49px;
+    height: 49px;
+  }
 }
 
 /* =========================================
@@ -390,20 +566,17 @@
 
 @media (prefers-reduced-motion: reduce) {
   .home-pooja-card,
-  .pooja-button {
-    transition: none;
+  .home-pooja-card-icon,
+  .home-pooja-card-accent,
+  .pooja-button,
+  .pooja-button svg {
+    transition: none !important;
   }
 
   .home-pooja-card:hover,
-  .pooja-button:hover {
-    transform: none;
+  .home-pooja-card:hover .home-pooja-card-icon,
+  .pooja-button:hover,
+  .pooja-button:hover svg {
+    transform: none !important;
   }
-}
-.pooja-lamp-decoration {
-  position: absolute;
-  left: -30px;
-  bottom: 0;
-  width: 145px;
-  z-index: 1;
-  pointer-events: none;
 }
