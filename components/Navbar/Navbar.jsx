@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useState } from "react";
@@ -6,12 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import {
-  Menu,
-  X,
-  Lamp,
-  ArrowUpRight,
-} from "lucide-react";
+import { Menu, X, Lamp, ArrowUpRight } from "lucide-react";
 
 import "./Navbar.css";
 
@@ -74,10 +68,7 @@ export default function Navbar() {
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      window.removeEventListener(
-        "keydown",
-        handleKeyDown
-      );
+      window.removeEventListener("keydown", handleKeyDown);
     };
   }, [isOpen]);
 
@@ -90,10 +81,7 @@ export default function Navbar() {
       return pathname === "/";
     }
 
-    return (
-      pathname === href ||
-      pathname.startsWith(`${href}/`)
-    );
+    return pathname === href || pathname.startsWith(`${href}/`);
   };
 
   const closeMenu = () => {
@@ -111,7 +99,6 @@ export default function Navbar() {
         .join(" ")}
     >
       <div className="temple-navbar-inner">
-
         {/* =====================================
             TEMPLE BRAND
         ===================================== */}
@@ -123,28 +110,23 @@ export default function Navbar() {
           onClick={closeMenu}
           aria-label="കിഴുർ തെരു ശ്രീ മഹാഗണപതി-ഭഗവതി ക്ഷേത്രം - Home"
         >
-          <span
-            className="brand-logo"
-            aria-hidden="true"
-          >
+          <span className="brand-logo" aria-hidden="true">
             <Image
               src="/images/temple-emblem.png"
               alt=""
-              width={55}
-              height={55}
+              width={512}
+              height={512}
+              // sizes="(max-width: 400px) 43px, (max-width: 1280px) 49px, 70px"
+              // quality={100}
               priority
               className="brand-logo-image"
             />
           </span>
 
           <span className="brand-name">
-            <span className="brand-name-first">
-              കിഴുർ തെരു ശ്രീ
-            </span>
+            <span className="brand-name-first">കിഴുർ തെരു ശ്രീ</span>
 
-            <span className="brand-name-second">
-              മഹാഗണപതി-ഭഗവതി ക്ഷേത്രം
-            </span>
+            <span className="brand-name-second">മഹാഗണപതി-ഭഗവതി ക്ഷേത്രം</span>
           </span>
         </Link>
 
@@ -154,9 +136,7 @@ export default function Navbar() {
 
         <nav
           id="temple-primary-navigation"
-          className={`temple-nav-links ${
-            isOpen ? "open" : ""
-          }`}
+          className={`temple-nav-links ${isOpen ? "open" : ""}`}
           aria-label="Primary navigation"
         >
           <div className="temple-nav-menu-heading">
@@ -173,12 +153,8 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   scroll={true}
-                  className={`temple-nav-link ${
-                    active ? "active" : ""
-                  }`}
-                  aria-current={
-                    active ? "page" : undefined
-                  }
+                  className={`temple-nav-link ${active ? "active" : ""}`}
+                  aria-current={active ? "page" : undefined}
                   onClick={closeMenu}
                 >
                   <span>{link.name}</span>
@@ -201,21 +177,11 @@ export default function Navbar() {
           <Link
             href="/donate"
             scroll={true}
-            className={`temple-donate ${
-              isActive("/donate") ? "active" : ""
-            }`}
-            aria-current={
-              isActive("/donate")
-                ? "page"
-                : undefined
-            }
+            className={`temple-donate ${isActive("/donate") ? "active" : ""}`}
+            aria-current={isActive("/donate") ? "page" : undefined}
             onClick={closeMenu}
           >
-            <Lamp
-              size={18}
-              strokeWidth={1.5}
-              aria-hidden="true"
-            />
+            <Lamp size={18} strokeWidth={1.5} aria-hidden="true" />
 
             <span>Offer to Temple</span>
 
@@ -228,8 +194,7 @@ export default function Navbar() {
           </Link>
 
           <div className="temple-nav-mobile-footer">
-            കിഴുർ തെരു ശ്രീ
-            മഹാഗണപതി-ഭഗവതി ക്ഷേത്രം
+            കിഴുർ തെരു ശ്രീ മഹാഗണപതി-ഭഗവതി ക്ഷേത്രം
           </div>
         </nav>
 
@@ -239,14 +204,8 @@ export default function Navbar() {
 
         <button
           type="button"
-          className={`temple-menu-toggle ${
-            isOpen ? "is-active" : ""
-          }`}
-          aria-label={
-            isOpen
-              ? "Close navigation menu"
-              : "Open navigation menu"
-          }
+          className={`temple-menu-toggle ${isOpen ? "is-active" : ""}`}
+          aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={isOpen}
           aria-controls="temple-primary-navigation"
           onClick={() => {
@@ -254,20 +213,11 @@ export default function Navbar() {
           }}
         >
           {isOpen ? (
-            <X
-              size={23}
-              strokeWidth={1.6}
-              aria-hidden="true"
-            />
+            <X size={23} strokeWidth={1.6} aria-hidden="true" />
           ) : (
-            <Menu
-              size={23}
-              strokeWidth={1.6}
-              aria-hidden="true"
-            />
+            <Menu size={23} strokeWidth={1.6} aria-hidden="true" />
           )}
         </button>
-
       </div>
     </header>
   );
