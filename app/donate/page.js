@@ -241,13 +241,13 @@ export default function DonatePage() {
               })}
             </div>
 
-            <p className="donate-categories-note">
+            {/* <p className="donate-categories-note">
               <Info size={17} aria-hidden="true" />
               <span>
                 ഇവ മാതൃകാ വിഭാഗങ്ങളാണ്. ഔദ്യോഗിക സമർപ്പണ പട്ടിക സ്ഥിരീകരിച്ച
                 ശേഷം പുതുക്കുന്നതാണ്.
               </span>
-            </p>
+            </p> */}
           </div>
         </section>
 

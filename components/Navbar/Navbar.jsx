@@ -2,13 +2,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import {
   Menu,
   X,
-  Landmark,
   Lamp,
   ArrowUpRight,
 } from "lucide-react";
@@ -118,6 +118,7 @@ export default function Navbar() {
 
         <Link
           href="/"
+          scroll={true}
           className="temple-brand"
           onClick={closeMenu}
           aria-label="കിഴുർ തെരു ശ്രീ മഹാഗണപതി-ഭഗവതി ക്ഷേത്രം - Home"
@@ -126,9 +127,13 @@ export default function Navbar() {
             className="brand-logo"
             aria-hidden="true"
           >
-            <Landmark
-              size={31}
-              strokeWidth={1.25}
+            <Image
+              src="/images/temple-emblem.png"
+              alt=""
+              width={55}
+              height={55}
+              priority
+              className="brand-logo-image"
             />
           </span>
 

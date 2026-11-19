@@ -1,261 +1,195 @@
 
+import Image from "next/image";
 import Link from "next/link";
 
 import {
-  Landmark,
   MapPin,
   Phone,
   Mail,
-  Heart,
   ArrowUpRight,
+  Lamp,
 } from "lucide-react";
 
 import "./Footer.css";
+
+const templeLinks = [
+  { name: "Home", href: "/" },
+  { name: "About Temple", href: "/about" },
+  { name: "Festivals", href: "/festivals" },
+  { name: "Pooja & Offerings", href: "/pooja-offerings" },
+  { name: "Gallery", href: "/gallery" },
+  { name: "Contact", href: "/contact" },
+];
 
 const templeMapUrl =
   "https://maps.app.goo.gl/j5E6nTA4kmctau7MA";
 
 export default function Footer() {
+  const year = new Date().getFullYear();
+
   return (
     <footer className="temple-footer">
-      {/* SUBTLE TOP GOLD LINE */}
-      <div
-        className="footer-top-accent"
-        aria-hidden="true"
-      />
 
       <div className="temple-footer-main">
 
-        {/* =====================================
-            TEMPLE IDENTITY
-        ===================================== */}
+        {/* BRAND */}
 
-        <div className="footer-brand">
+        <div className="temple-footer-brand-col">
+
           <Link
             href="/"
-            className="footer-logo"
-            aria-label="ഹോം പേജിലേക്ക്"
+            className="temple-footer-brand"
           >
-            <Landmark
-              size={43}
-              strokeWidth={1.3}
-              aria-hidden="true"
-            />
-          </Link>
-
-          <div className="footer-temple-name">
-            <span>കിഴുർ തെരു ശ്രീ</span>
-            <span>
-              മഹാഗണപതി-ഭഗവതി ക്ഷേത്രം
-            </span>
-
             <span
-              className="footer-brand-underline"
+              className="temple-footer-logo"
               aria-hidden="true"
-            />
-          </div>
-        </div>
-
-        {/* =====================================
-            CONTACT INFORMATION
-        ===================================== */}
-
-        <div className="footer-contact">
-
-          <a
-            href={templeMapUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="footer-contact-item"
-          >
-            <MapPin
-              size={18}
-              strokeWidth={1.6}
-              aria-hidden="true"
-            />
-
-            <span>
-              കിഴുർ, പയ്യോളി, കോഴിക്കോട്
-            </span>
-          </a>
-
-          <a
-            href="tel:+919562465095"
-            className="footer-contact-item"
-          >
-            <Phone
-              size={17}
-              strokeWidth={1.6}
-              aria-hidden="true"
-            />
-
-            <span>+91 95624 65095</span>
-          </a>
-
-          <a
-            href="mailto:abhicplash@gmail.com"
-            className="footer-contact-item"
-          >
-            <Mail
-              size={17}
-              strokeWidth={1.6}
-              aria-hidden="true"
-            />
-
-            <span>abhicplash@gmail.com</span>
-          </a>
-
-        </div>
-
-        {/* =====================================
-            SOCIAL MEDIA
-        ===================================== */}
-
-        <div className="footer-social">
-          <p>ഞങ്ങളെ പിന്തുടരുക</p>
-
-          <div className="footer-social-icons">
-
-            {/* YouTube - placeholder */}
-            <span
-              className="footer-social-placeholder"
-              title="YouTube - coming soon"
-              role="img"
-              aria-label="YouTube"
             >
-              <svg
-                viewBox="0 0 24 24"
-                width="18"
-                height="18"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.6 3.6 12 3.6 12 3.6s-7.6 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.8.5 9.4.5 9.4.5s7.6 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.5v-7l6.2 3.5-6.2 3.5Z" />
-              </svg>
+              <Image
+                src="/images/temple-emblem.png"
+                alt=""
+                width={180}
+                height={120}
+                className="temple-footer-logo-image"
+              />
             </span>
 
-            {/* Facebook - placeholder */}
-            <span
-              className="footer-social-placeholder"
-              title="Facebook - coming soon"
-              role="img"
-              aria-label="Facebook"
-            >
-              <strong className="footer-facebook-icon">
-                f
+            <span className="temple-footer-brand-name">
+              <span>കിഴുർ തെരു ശ്രീ</span>
+              <strong>
+                മഹാഗണപതി-ഭഗവതി ക്ഷേത്രം
               </strong>
             </span>
+          </Link>
 
-            {/* Instagram - placeholder */}
-            <span
-              className="footer-social-placeholder"
-              title="Instagram - coming soon"
-              role="img"
-              aria-label="Instagram"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                width="19"
-                height="19"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
+          <p className="temple-footer-description">
+            കിഴുർ, പയ്യോളി,
+            കോഴിക്കോട്, കേരളം.
+          </p>
+
+          <div
+            className="temple-footer-brand-rule"
+            aria-hidden="true"
+          />
+        </div>
+
+        {/* QUICK LINKS */}
+
+        <div className="temple-footer-column">
+          <h2>Explore</h2>
+
+          <nav
+            className="temple-footer-links"
+            aria-label="Footer navigation"
+          >
+            {templeLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                scroll={true}
               >
-                <rect
-                  x="2"
-                  y="2"
-                  width="20"
-                  height="20"
-                  rx="5"
-                />
+                {link.name}
+              </Link>
+            ))}
+          </nav>
+        </div>
 
-                <circle
-                  cx="12"
-                  cy="12"
-                  r="4"
-                />
+        {/* CONTACT */}
 
-                <circle
-                  cx="18"
-                  cy="6"
-                  r="1"
-                  fill="currentColor"
-                  stroke="none"
-                />
-              </svg>
-            </span>
+        <div className="temple-footer-column">
+          <h2>ബന്ധപ്പെടുക</h2>
+
+          <div className="temple-footer-contact">
+
+            <a href="tel:+919562465095">
+              <Phone
+                size={17}
+                aria-hidden="true"
+              />
+              <span>+91 9562465095</span>
+            </a>
+
+            <a href="mailto:abhicplash@gmail.com">
+              <Mail
+                size={17}
+                aria-hidden="true"
+              />
+              <span>abhicplash@gmail.com</span>
+            </a>
+
+            <a
+              href={templeMapUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <MapPin
+                size={18}
+                aria-hidden="true"
+              />
+
+              <span>
+                കിഴുർ, പയ്യോളി
+                <br />
+                കോഴിക്കോട്, കേരളം
+                <br />
+                PIN – 673522
+              </span>
+            </a>
 
           </div>
         </div>
 
-        {/* =====================================
-            CONTACT BUTTON
-        ===================================== */}
+        {/* OFFERING */}
 
-        <div className="footer-action">
+        <div className="temple-footer-column temple-footer-offering">
+          <h2>സമർപ്പണം</h2>
+
+          <p>
+            ക്ഷേത്ര സമർപ്പണങ്ങളും
+            സംഭാവനകളും സംബന്ധിച്ച
+            വിവരങ്ങൾക്ക്.
+          </p>
+
           <Link
-            href="/contact"
-            className="footer-contact-button"
+            href="/donate"
+            className="temple-footer-offer-link"
           >
-            <Heart
-              size={17}
-              strokeWidth={1.6}
+            <Lamp
+              size={18}
+              strokeWidth={1.5}
               aria-hidden="true"
             />
 
-            <span>
-              ക്ഷേത്രവുമായി ബന്ധപ്പെടുക
-            </span>
+            <span>Offer to Temple</span>
 
             <ArrowUpRight
-              className="footer-action-arrow"
-              size={15}
-              strokeWidth={1.6}
+              size={16}
               aria-hidden="true"
             />
           </Link>
         </div>
-
       </div>
 
-      {/* =====================================
-          SIMPLE GOLD DIVIDER
-          NO LOTUS
-      ===================================== */}
+      {/* FINE GOLD DIVIDER */}
 
       <div
-        className="footer-gold-divider"
+        className="temple-footer-divider"
         aria-hidden="true"
       />
 
-      {/* =====================================
-          FOOTER BOTTOM
-      ===================================== */}
+      {/* FOOTER BOTTOM */}
 
       <div className="temple-footer-bottom">
-
         <p>
-          © {new Date().getFullYear()} കിഴുർ തെരു ശ്രീ
+          © {year} കിഴുർ തെരു ശ്രീ
           മഹാഗണപതി-ഭഗവതി ക്ഷേത്രം.
-          എല്ലാ അവകാശങ്ങളും നിക്ഷിപ്തം.
+          All rights reserved.
         </p>
 
-        <div className="footer-bottom-links">
-          <Link href="/privacy-policy">
-            Privacy Policy
-          </Link>
-
-          <span aria-hidden="true">|</span>
-
-          <Link href="/terms">
-            Terms of Service
-          </Link>
-        </div>
-
+        <p className="temple-footer-bottom-location">
+          Kizhur · Payyoli · Kerala
+        </p>
       </div>
+
     </footer>
   );
 }
