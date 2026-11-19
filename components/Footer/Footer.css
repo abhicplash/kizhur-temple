@@ -442,3 +442,326 @@
     transition: none !important;
   }
 }
+
+/* =========================================
+   FOOTER — MOBILE CENTER ALIGNMENT
+   Desktop design remains unchanged
+========================================= */
+
+@media (max-width: 650px) {
+
+  /* Main footer layout */
+
+  .temple-footer-main {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: 38px;
+  }
+
+  /* All footer columns */
+
+  .temple-footer-brand-col,
+  .temple-footer-column {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Temple logo and name */
+
+  .temple-footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 0 auto;
+  }
+
+  .temple-footer-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  .temple-footer-brand-name {
+    align-items: center;
+    text-align: center;
+  }
+
+  .temple-footer-description {
+    text-align: center;
+    margin: 18px auto 0;
+  }
+
+  .temple-footer-brand-rule {
+    margin: 22px auto 0;
+  }
+
+  /* Section headings */
+
+  .temple-footer-column h2 {
+    text-align: center;
+  }
+
+  .temple-footer-column h2::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Explore links */
+
+  .temple-footer-links {
+    align-items: center;
+    text-align: center;
+  }
+
+  .temple-footer-links a {
+    text-align: center;
+  }
+
+  /* Contact details */
+
+  .temple-footer-contact {
+    align-items: center;
+  }
+
+  .temple-footer-contact a {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .temple-footer-contact svg {
+    margin-top: 0;
+  }
+
+  /* Temple offering */
+
+  .temple-footer-offering p {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .temple-footer-offer-link {
+    margin: 0 auto;
+  }
+
+  /* Bottom copyright area */
+
+  .temple-footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 9px;
+  }
+
+  .temple-footer-bottom p {
+    text-align: center;
+  }
+}
+
+@media (max-width: 650px) {
+  .temple-footer-contact {
+    width: 100%;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .temple-footer-contact a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    width: 100%;
+    text-align: center;
+  }
+
+  .temple-footer-contact svg {
+    margin: 0;
+  }
+
+  .temple-footer-contact span {
+    text-align: center;
+    line-height: 1.8;
+  }
+}
+
+/* =========================================
+   FOOTER — COMPLETE MOBILE CENTER ALIGNMENT
+========================================= */
+
+@media (max-width: 650px) {
+
+  /* Main footer grid */
+
+  .temple-footer .temple-footer-main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    gap: 38px;
+
+    padding: 58px 22px 48px;
+    text-align: center;
+  }
+
+  /* Every footer section */
+
+  .temple-footer .temple-footer-brand-col,
+  .temple-footer .temple-footer-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-width: 0;
+    text-align: center;
+  }
+
+  /* Temple logo and name */
+
+  .temple-footer .temple-footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .temple-footer .temple-footer-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .temple-footer .temple-footer-brand-name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .temple-footer .temple-footer-description {
+    margin: 18px auto 0;
+    text-align: center;
+  }
+
+  .temple-footer .temple-footer-brand-rule {
+    margin: 22px auto 0;
+  }
+
+  /* All section headings */
+
+  .temple-footer .temple-footer-column h2 {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .temple-footer .temple-footer-column h2::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Explore links */
+
+  .temple-footer .temple-footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    text-align: center;
+  }
+
+  .temple-footer .temple-footer-links a {
+    text-align: center;
+  }
+
+  /* Contact section */
+
+  .temple-footer .temple-footer-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    gap: 22px;
+    text-align: center;
+  }
+
+  /* Phone, email and address */
+
+  .temple-footer .temple-footer-contact a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    margin: 0 auto;
+    gap: 8px;
+
+    text-align: center;
+  }
+
+  .temple-footer .temple-footer-contact a svg {
+    display: block;
+    flex-shrink: 0;
+    margin: 0 auto;
+  }
+
+  .temple-footer .temple-footer-contact a span {
+    display: block;
+    width: 100%;
+    text-align: center;
+    line-height: 1.8;
+  }
+
+  /* Offering section */
+
+  .temple-footer .temple-footer-offering p {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .temple-footer .temple-footer-offer-link {
+    margin: 0 auto;
+  }
+
+  /* Copyright */
+
+  .temple-footer .temple-footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+    padding: 23px 20px;
+
+    text-align: center;
+  }
+
+  .temple-footer .temple-footer-bottom p {
+    width: 100%;
+    text-align: center;
+  }
+}
